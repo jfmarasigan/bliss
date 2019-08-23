@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+Description: Layer for common functions used by E-Products
+
+Resources:
+  Commons:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: eproducts-common
+      Description: Layer containing MySQL utility and custom response builder modules
+      CompatibleRuntimes:
+        - nodejs8.10
+        - nodejs10.x
+      LicenseInfo: Available under the MIT license
+      ContentUri: commons/
+  Utilities:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: eproducts-utilities
+      Description: Layer containing utility libs for functions
+      CompatibleRuntimes:
+        - nodejs8.10
+        - nodejs10.x
+      LicenseInfo: Available under the MIT license
+      ContentUri: utilities/
+
+Outputs:
+  EProductsCommonARN:
+    Description: ARN of this layer (commons)
+    Value: !Ref Commons
+    Export:
+      Name: eproducts-common-arn
+  EProductsUtilsARN:
+    Description: ARN of this layer (commons)
+    Value: !Ref Utilities
+    Export:
+      Name: eproducts-utils-arn

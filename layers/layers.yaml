@@ -17,7 +17,9 @@ Resources:
     Type: AWS::Serverless::LayerVersion
     Properties:
       LayerName: eproducts-utilities
-      Description: Layer containing utility libs for functions
+      Description: >
+        Layer containing utility libs for functions 
+        (cheerio, nodemailer, needle, easy-soap-request, xml2js)
       CompatibleRuntimes:
         - nodejs8.10
         - nodejs10.x

@@ -1,0 +1,22 @@
+{
+  "name": "ectpl-post-to-local",
+  "version": "1.0.0",
+  "description": "lambda function to post ctpl policy to local network app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql",
+    "promise",
+    "REST"
+  ],
+  "author": "John Daniel F. Marasigan",
+  "license": "ISC",
+  "dependencies": {
+    "needle": "^2.4.0"
+  },
+  "devDependencies": {
+    "node": "12.5.0"
+  }
+}

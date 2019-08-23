@@ -1,0 +1,16 @@
+{
+    "name": "bliss-commons",
+    "version": "1.0.0",
+    "description": "common layer; includes promise-mysql and lambda-warmer",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "lambda-warmer": "^1.2.1",
+        "promise-mysql": "^4.1.0"
+    }
+}

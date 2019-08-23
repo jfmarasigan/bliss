@@ -1,0 +1,3 @@
+{
+    "paymentQuery" : "SELECT UPDATE_PAYMENT_DTLS(?, ?, ?, ?, ?) AS paytStat"
+}

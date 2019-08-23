@@ -1,0 +1,7 @@
+{
+    "cocafDetails" : "CALL GET_COC_MC_DTLS(?)",
+    "cocafQuery" : {
+        "trans" : "UPDATE EPIT_CTPL_TRANS SET cocaf_auth_stat = ?, last_update = sysdate() WHERE tran_id = ?",
+        "vehicle" : "UPDATE EPIT_CTPL_VEHICLE SET coc_no = ?, coc_atcn = ? WHERE policy_id = ?"
+    }
+}

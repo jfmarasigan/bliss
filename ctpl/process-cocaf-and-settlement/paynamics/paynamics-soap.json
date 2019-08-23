@@ -1,0 +1,54 @@
+{
+    "url" : "https://testpti.payserv.net/Paygate/ccservice.asmx",
+    "userAgent" : "CPI-ECTPL/1.0 ECTPL Web Application by Computer Professionals Inc. PH",
+    "modes" : {
+        "settle" : {
+            "envelope" : [
+                "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:pay=\"http://paygate.paynamics.net/\">",
+                "<soap:Header/>",
+                "<soap:Body>",
+                    "<pay:settleauthorized>",
+                        "<pay:merchantid>${merchantId}</pay:merchantid>",
+                        "<pay:request_id>${requestId}</pay:request_id>",
+                        "<pay:org_trxid>${responseId}</pay:org_trxid>",
+                        "<pay:ip_address>${ipAddress}</pay:ip_address>",
+                        "<pay:amount>${amount}</pay:amount>",
+                        "<pay:notification_url>${notificationURL}</pay:notification_url>",
+                        "<pay:response_url>${responseURL}</pay:response_url>",
+                        "<pay:signature>${signature}</pay:signature>",
+                    "</pay:settleauthorized>",
+                "</soap:Body>",
+                "</soap:Envelope>"
+            ],
+            "soapAction" : "http://paygate.paynamics.net/settleauthorized",
+            "result" : {
+                "responseTag" : "settleauthorizedResponse",
+                "resultTag" : "settleauthorizedResult"
+            }
+        },
+        "reverse" : {
+            "envelope" : [
+                "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:pay=\"http://paygate.paynamics.net/\">",
+                "<soap:Header/>",
+                "<soap:Body>",
+                    "<pay:reversal>",
+                        "<pay:merchantid>${merchantId}</pay:merchantid>",
+                        "<pay:request_id>${requestId}</pay:request_id>",
+                        "<pay:org_trxid>${responseId}</pay:org_trxid>",
+                        "<pay:ip_address>${ipAddress}</pay:ip_address>",
+                        "<pay:amount>${amount}</pay:amount>",
+                        "<pay:notification_url>${notificationUrl}</pay:notification_url>",
+                        "<pay:response_url>${responseUrl}</pay:response_url>",
+                        "<pay:signature>${signature}</pay:signature>",
+                    "</pay:reversal>",
+                "</soap:Body>",
+                "</soap:Envelope>"
+            ],
+            "soapAction" : "http://paygate.paynamics.net/reversal",
+            "result" : {
+                "responseTag" : "reversalResponse",
+                "resultTag" : "reversalResult"
+            }
+        }
+    }
+}

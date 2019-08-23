@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Request>
+	<orders>
+		<items>
+			<Items>
+				<itemname></itemname>
+				<quantity>1</quantity>
+				<amount></amount>
+			</Items>
+		</items>
+	</orders>
+	<mid></mid>
+	<request_id></request_id>
+	<ip_address></ip_address>
+	<notification_url></notification_url>
+	<response_url></response_url>
+	<cancel_url>/</cancel_url>
+	<mtac_url/>
+	<descriptor_note></descriptor_note>
+	<fname></fname>
+	<lname></lname>
+	<mname></mname>
+	<address1></address1>
+	<address2></address2>
+	<city></city>
+	<state></state>
+	<country>PH</country>
+	<zip></zip>
+	<secure3d>try3d</secure3d>
+	<trxtype>authorized</trxtype>
+	<email></email>
+	<phone></phone>
+	<mobile></mobile>
+	<client_ip></client_ip>
+	<amount></amount>
+	<currency>PHP</currency>
+	<mlogo_url></mlogo_url>
+	<pmethod>cc,gc</pmethod>
+	<signature></signature>
+</Request>

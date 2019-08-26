@@ -13,6 +13,7 @@ phases:
   build:
     commands:
       - echo Deployment started on `date`
+      # put build details for lambda function here (call serverless template here)
   post_build:
     commands:
-      - echo Deployment done.
+      - echo Deployment done on `date`

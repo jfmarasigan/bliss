@@ -1,0 +1,36 @@
+service:
+  name: ctpl
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ap-southeast-1
+  memorySize: 1024
+  timeout: 10
+  deploymentBucket:
+    name: ${env:STACK_BUCKET}
+
+functions:
+  create-ctpl-payment-request:
+    name: create-ctpl-payment-request
+    handler: create-ctpl-payment-request/index.handler
+    description: "[CTPL] returns base 64 encoded string to be used for POST redirect in paynamics"
+    events:
+      - http:
+          path: create-payement-request
+          method: get
+          integration: lambda-proxy
+          cors: true
+    environment:
+      CANCEL_URL: ${env:DOMAIN}/ctpl/cancel-transaction
+      DESCRIPTOR_NOTE:
+      IP: ${env:IP}
+      ITEM_NAME: ${env:CTPL_ITEM_NAME}
+      MERCHANT_ID: ${env:MERCHANT_ID}
+      MERCHANT_KEY: ${env:MERCHANT_KEY}
+      MERCHANT_LOGO_URL: ${env:LOGO_URL}
+      MTAC_URL: ${env:MTAC_URL}
+      NOTIFICATION_URL: ${env:DOMAIN}/ctpl/receive-notification
+      RESPONSE_URL: ${env:DOMAIN}/ctpl/response-redirect
+    layers:
+      - ${cf:eproducts-layers.EProductsUtilsARN}

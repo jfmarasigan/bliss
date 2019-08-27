@@ -25,7 +25,7 @@ functions:
           cors: true
     environment:
       CANCEL_URL: ${env:DOMAIN}/ctpl/cancel-transaction
-      DESCRIPTOR_NOTE:
+      DESCRIPTOR_NOTE: ${env:DESCRIPTOR_NOTE}
       IP: ${env:IP}
       ITEM_NAME: ${env:CTPL_ITEM_NAME}
       MERCHANT_ID: ${env:MERCHANT_ID}

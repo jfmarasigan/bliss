@@ -1,6 +1,6 @@
-# buildspec for initial resources (buckets, etc...)
-
 version: 2.0
+
+# buildspec for initial resources (buckets, etc...)
 
 phases:
   # install:

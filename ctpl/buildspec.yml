@@ -1,5 +1,9 @@
 version: 0.2
 
+# environment variables
+# DOMAIN - domain to be used for the web app/s
+# COMPANY_NAME - Full/abbreviated name of company using this E-Products instance
+
 phases:
   install:
     runtime-versions:
@@ -16,9 +20,15 @@ phases:
       - cd ctpl
       # create bucket for ctpl web app (name = ctpl.<domain>)
       # cloudformation template (?)
-      -
+      - aws s3
       # copy ctpl/web to the created bucket for ctpl web app
-      -
+      - cd web
+      - aws s3 sync . s3://<>
+      - cd ..
+      # copy ctpl/reports contents to <reports bucket>/ctpl for ctpl reports
+      - cd reports
+      - aws s3 sync . s3://<>/ctpl
+      - cd ..
       # deploy serverless template for ctpl
       - serverless deploy
   post_build:

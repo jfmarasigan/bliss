@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Bucket creation for CTPL product
+
+Parameters:
+  CompanyNameParam:
+    Type: String
+    Description: Full/abbreviated name of company using this E-Products instance
+  BucketNameParam:
+    Type: String
+    Description: "Bucket name for CTPL Web application"
+
+Resources:
+  CTPLBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName:
+        Ref: BucketNameParam
+      VersioningConfiguration:
+        Status: Enabled
+      WebsiteConfiguration:
+        IndexDocument: index.html
+Outputs:
+  CTPLBucket:
+    Description: Ref value for this bucket
+    Value: !Ref CTPLBucket
+    Export:
+      Name:
+        Fn::Sub:
+          - "${CompanyName}-ctpl-web-bucket"
+          - { CompanyName: !Ref CompanyNameParam }

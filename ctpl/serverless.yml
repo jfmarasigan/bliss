@@ -14,6 +14,8 @@ provider:
 
 package:
   individually: true
+  exclude:
+    - ./**
 
 functions:
   create-ctpl-payment-request:
@@ -37,5 +39,8 @@ functions:
       MTAC_URL: ${env:MTAC_URL}
       NOTIFICATION_URL: ${env:DOMAIN}/ctpl/receive-notification
       RESPONSE_URL: ${env:DOMAIN}/ctpl/response-redirect
+    package:
+      include:
+        - create-ctpl-payment-request/**
     layers:
       - ${cf:eproducts-layers.EProductsUtilsARN}

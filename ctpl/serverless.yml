@@ -13,17 +13,13 @@ provider:
     name: ${env:STACK_BUCKET}
 
 package:
-  exclude:
-    - ./**
+  individually: true
 
 functions:
   create-ctpl-payment-request:
     name: create-ctpl-payment-request
     handler: create-ctpl-payment-request/index.handler
     description: "[CTPL] returns base 64 encoded string to be used for POST redirect in paynamics"
-    package:
-      include:
-        - create-ctpl-payment-request/**
     events:
       - http:
           path: create-payement-request

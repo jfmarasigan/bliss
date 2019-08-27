@@ -5,8 +5,7 @@ phases:
     runtime-versions:
       nodejs: 8
     commands:
-      - echo Installing serverless framework...
-      - npm i -g serverless
+      -
   pre_build:
     commands:
       -
@@ -16,7 +15,7 @@ phases:
       # put build command for layers here
       - cd layers
       - aws cloudformation package --template-file layers.yaml --output-template-file layers.cf.yaml --s3-bucket $STACK_BUCKET
-      - aws cloudformation deploy --template-file layers.cf.yaml --stack-name bliss-layers
+      - aws cloudformation deploy --template-file layers.cf.yaml --stack-name eproducts-layers
       - cd ..
   post_build:
     commands:

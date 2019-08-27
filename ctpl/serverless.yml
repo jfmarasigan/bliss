@@ -35,4 +35,4 @@ functions:
       NOTIFICATION_URL: ${env:DOMAIN}/ctpl/receive-notification
       RESPONSE_URL: ${env:DOMAIN}/ctpl/response-redirect
     layers:
-      - ${cf:eproducts-layers.eproducts-utils-arn}
+      - ${cf:eproducts-layers.EProductsUtilsARN}

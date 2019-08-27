@@ -1,21 +1,22 @@
 # buildspec for initial resources (buckets, etc...)
+
 version: 2.0
 
 phases:
-  install:
-    runtime_versions:
-      nodejs: 8
+  # install:
+  # runtime_versions:
+  #   nodejs: 8
 
-    commands:
-      - echo Installing serverless framework...
-      - npm i -g serverless
-  pre_build:
-    commands:
-      -
+  # commands:
+  #   - echo Installing serverless framework...
+  #   - npm i -g serverless
+  # pre_build:
+  #   commands:
+  #     -
   build:
     commands:
       - echo Deployment started on `date`
-      # put build command for layers here
+      - aws s3 mb s3://$STACK_BUCKET
   post_build:
     commands:
       - echo Deployment done.

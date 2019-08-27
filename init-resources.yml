@@ -14,7 +14,12 @@ phases:
   build:
     commands:
       - echo Deployment started on `date`
+      # create stack repository
       - aws s3 mb s3://$STACK_BUCKET
+      # [A] deploy lambda function that sets origin response for AWS CloudFront distributions
+      # create cloudfront deployment
+      # use env variables in code build to set domain
+      # set origin response trigger using ARN of lambda function (see [A])
   post_build:
     commands:
       - echo Deployment done.

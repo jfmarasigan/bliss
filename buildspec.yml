@@ -1,5 +1,9 @@
 version: 0.2
 
+# environment variable/s used (code build environment variables)
+# STACK_BUCKET - name of s3 bucket used as cloudformation stack repo
+# STACK_NAME - name for this cloudformation stack; <company name>-bliss-layers
+
 phases:
   install:
     runtime-versions:
@@ -15,7 +19,7 @@ phases:
       # put build command for layers here
       - cd layers
       - aws cloudformation package --template-file layers.yaml --output-template-file layers.cf.yaml --s3-bucket $STACK_BUCKET
-      - aws cloudformation deploy --template-file layers.cf.yaml --stack-name eproducts-layers
+      - aws cloudformation deploy --template-file layers.cf.yaml --stack-name $STACK_NAME
       - cd ..
   post_build:
     commands:

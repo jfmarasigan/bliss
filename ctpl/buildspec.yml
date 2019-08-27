@@ -13,8 +13,13 @@ phases:
   build:
     commands:
       - echo Deployment started on `date`
-      # put build details for lambda function here (call serverless template here)
       - cd ctpl
+      # create bucket for ctpl web app (name = ctpl.<domain>)
+      # cloudformation template (?)
+      -
+      # copy ctpl/web to the created bucket for ctpl web app
+      -
+      # deploy serverless template for ctpl
       - serverless deploy
   post_build:
     commands:

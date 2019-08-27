@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.error-field {
+    background: linear-gradient(to bottom, rgba(121, 19, 19, 0.171), rgb(134, 20, 20, 0.171), rgb(145, 22, 22, 0.171));
+}
+
+/* =========================================== PRELOADER */
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 9999999;
+}
+
+.preloader-inner {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.preloader-inner .single-loader {
+    width: 33%;
+    height: 33%;
+    float: left;
+    animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+
+.preloader-inner .seven {
+    animation-delay: 0s;
+}
+
+.preloader-inner .four, .preloader-inner .eight {
+    animation-delay: 0.1s;
+}
+
+.preloader-inner .one, .preloader-inner .five, .preloader-inner .nine {
+    animation-delay: 0.2s;
+}
+
+.preloader-inner .two, .preloader-inner .six {
+    animation-delay: 0.3s;
+}
+
+.preloader-inner .three {
+    animation-delay: 0.4s;
+}
+
+/* =========================================== NOTICE */
+
+#notice {
+    color: gray;
+    position: fixed;
+    font-size: 11px;
+    padding: 5px;
+    width: 30%;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    float: left;
+    margin: 200px 35%;
+    z-index: 90000001;
+    padding: 20px 0;
+    border: 3px solid #FFF;
+    background-color: #E8E8E8;
+    opacity: 0.8;
+    display: none;
+}
+
+/* =========================================== MODAL */
+
+.modal-header {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.modal-footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.modal-open nav {
+    padding-right: 17px;
+}
+
+/* =========================================== NAVBAR */
+
+.navbar {
+    padding: 0.5% 0;
+    font-size: 1.2em;
+    border-bottom: none;
+}
+
+.navbar-brand {
+    padding: 0 15px 5px;
+}
+
+.navbar-brand img {
+    height: 50px;
+}
+
+.nav li {
+    margin-top: 4px;
+}
+
+.nav li a {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    margin: auto 10px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.nav li a:not(.apply-btn)::before {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.nav li a.active:not(.apply-btn)::before, .nav li a:hover::before {
+    width: 100%;
+    opacity: 1;
+}
+
+.apply-link {
+    display: none !important;
+}
+
+.apply-btn {
+    width: 150px;
+    font-weight: bold;
+    border: none;
+    margin-top: 3px !important;
+    margin-left: 30px !important;
+    padding: 10px !important;
+    transition: .3s all;
+}
+
+/* =========================================== FOOTER */
+
+footer {
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+footer p a {
+    transition: .5s all;
+}
+
+footer p a:hover {
+    text-decoration: none;
+}
+
+/* =========================================== GO TO TOP */
+
+#goToTop {
+    height: 55px;
+    width: 55px;
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    border-radius: 50%;
+    border: 3px solid #FFF;
+    text-align: center;
+    font-size: 30px;
+    opacity: 0;
+    z-index: 1000;
+    transition: .3s all;
+}
+
+#goToTop.scroll {
+    opacity: 1;
+}
+
+#goToTop:hover {
+    animation: up-down .5s infinite;
+}
+
+/* =========================================== MEDIA QUERIES */
+
+@media (max-width: 1024px) {
+    #notice {
+        width: 40%;
+        margin: 200px 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    #notice {
+        width: 50%;
+        margin: 200px 25%;
+    }
+}
+
+@media (max-width: 767.5px) {
+    .apply-link {
+        display: block !important;
+    }
+    .apply-btn {
+        display: none !important;
+    }
+    .nav li a:hover::before {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 588px) {
+    #notice {
+        width: 60%;
+        margin: 200px 20%;
+    }
+}
+
+@media (max-width: 568px) {
+    footer {
+        padding: 10px 10px 50px;
+    }
+}
+
+@media (max-width: 472px) {
+    #notice {
+        width: 70%;
+        margin: 200px 15%;
+    }
+}
+
+@media (max-width: 426px) {
+    #goToTop.scroll {
+        display: none;
+    }
+}
+
+@media (max-width: 342px) {
+    #notice {
+        width: 80%;
+        margin: 200px 10%;
+    }
+}
+
+@media (max-width: 336px) {
+    footer {
+        padding-bottom: 70px;
+    }
+}

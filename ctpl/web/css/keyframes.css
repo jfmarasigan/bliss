@@ -1,0 +1,28 @@
+@keyframes sk-cubeGridScaleDelay {
+    0%, 70%, 100% {
+        -webkit-transform: scale3D(1, 1, 1);
+        transform: scale3D(1, 1, 1);
+    }
+    35% {
+        -webkit-transform: scale3D(0, 0, 1);
+        transform: scale3D(0, 0, 1);
+    }
+}
+
+@keyframes up-down {
+    50% {
+        padding-top: 7px;
+    }
+    100% {
+        padding-top: 0;
+    }
+}
+
+@keyframes fillWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}

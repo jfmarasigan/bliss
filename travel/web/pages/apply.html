@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AWS - CPI &#8739; TRAVEL [Application]</title>
+
+    <link rel="shortcut icon" href="../images/plane.ico" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="../css/keyframes.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/autocomplete.css">
+    <link rel="stylesheet" href="../css/multi-carousel.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/color/color-1.css">
+    <link rel="stylesheet" href="../css/pages/apply.css">
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/autocomplete.js"></script>
+    <script src="../js/multi-carousel.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/pages/agent-login.js"></script>
+    <script src="../js/pages/apply.js"></script>
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="single-loader one"></div>
+            <div class="single-loader two"></div>
+            <div class="single-loader three"></div>
+            <div class="single-loader four"></div>
+            <div class="single-loader five"></div>
+            <div class="single-loader six"></div>
+            <div class="single-loader seven"></div>
+            <div class="single-loader eight"></div>
+            <div class="single-loader nine"></div>
+        </div>
+    </div>
+
+    <div style="float: left; height: 100%; width: 100%; background-color: #000; margin: 0; position: fixed; left: 0; top: 0; opacity: 0.4; z-index: 90000000; display: none;"
+        id="noticeOverlay"></div>
+    <div id="notice" name="notice">
+        <table style="margin: 0 auto;">
+            <tr id="noticeLoadingImg">
+                <td style="text-align: center;">
+                    <img src="../images/loading.gif" width="220px" height="19px" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-size: 14px;">
+                    <label id="noticeMessage" style="width: 100%; text-align: center;"></label>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="../index.html" class="navbar-brand"><img src="../images/company-logo.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-main">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="../index.html">Back to Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="form">
+        <div class="container">
+            <div id="form-details">
+                <div class="form-box">
+                    <div id="travel-dtls-btn" class="menu">
+                        <div class="menu-logo"><i class="fa fa-plane"></i></div>
+                        <div class="menu-label">Travel Details</div>
+                    </div>
+                    <div id="travel-dtls" class="detail">
+                        <div id="trip-types-div" class="form-fields center-rdo-btns"></div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>Plan Type *</label>
+                                <select id="sel-plan-type" class="form-control required"></select>
+                            </div>
+                            <div>
+                                <label>Destination *</label>
+                                <select id="sel-destination" class="form-control required">
+                                    <option value="">Select Plan Type First</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label id="lbl-depart">Departure Date *</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </div>
+                                    <input type="text" id="dp-incept-date" class="form-control required"
+                                        placeholder="MM/DD/YYYY">
+                                </div>
+                            </div>
+                            <div>
+                                <label id="lbl-return">Return Date *</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </div>
+                                    <input type="text" id="dp-expiry-date" class="form-control required"
+                                        placeholder="MM/DD/YYYY">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-fields">
+                            <div>
+                                <label>Itinerary <i class="fa fa-info-circle"
+                                        title="Please provide flight details such as route, airline, flight no., departure time and arrival time. &#013;&#013;Sample:&#013;MNL-BCD | CebPac | 5J 700  | 06/17/2019 10:00PM | 06/17/2019 11:25PM &#013;BCD-MNL | PAL       | PR 300 | 07/01/2019 02:00PM | 07/01/2019 03:25PM"></i>
+                                    *</label>
+                                <textarea id="txt-itinerary" class="form-control required capsAllText"
+                                    rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-button">
+                            <button id="travel-save-btn">Save & Next</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div id="plan-dtls-btn" class="menu disabled">
+                        <div class="menu-logo"><i class="fa fa-columns"></i></div>
+                        <div class="menu-label">Plan Selection</div>
+                    </div>
+                    <div id="plan-dtls" class="detail">
+                        <div class="multi-carousel" data-items="1,2,3,2,3" data-pixels="420,600,722,1200"
+                            data-slide="1">
+                            <div id="plan-choices" class="multi-carousel-inner"></div>
+                            <button class="btn btn-primary leftLst"><i class="fa fa-chevron-left"></i></button>
+                            <button class="btn btn-primary rightLst"><i class="fa fa-chevron-right"></i></button>
+                        </div>
+                        <div id="plan-promo-btn">
+                            <div id="plan-promo-code">
+                                <label id="lbl-promo-code">Promo Code:</label>
+                                <input type="text" id="txt-promo-code" class="form-control" placeholder="Promo Code"
+                                    promo-name="" promo-type="" discount-rate="" discount-amt="">
+                            </div>
+                            <div class="form-button" style="padding-top: 1px;">
+                                <button id="plan-save-btn">Save & Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div id="my-dtls-btn" class="menu disabled">
+                        <div class="menu-logo"><i class="fa fa-user"></i></div>
+                        <div class="menu-label">My Details</div>
+                    </div>
+                    <div id="my-dtls" class="detail">
+                        <div class="form-fields center-rdo-btns">
+                            <div id="rdo-user-dtl" class="radio-btn selected">
+                                <i class="fa fa-user"></i> You
+                            </div>
+                            <div id="rdo-passenger-dtl" class="radio-btn disabled">
+                                <i class="fa fa-users"></i> Passengers
+                            </div>
+                        </div>
+                        <div class="white-form">
+                            <div id="user-form">
+                                <div class="form-fields inline">
+                                    <div>
+                                        <label>First Name *</label>
+                                        <input type="text" id="txt-user-first-name"
+                                            class="form-control required capsAllText" placeholder="First Name">
+                                    </div>
+                                    <div>
+                                        <label>Middle Initial</label>
+                                        <input type="text" id="txt-user-middle-initial" class="form-control capsAllText"
+                                            placeholder="Middle Initial" maxlength="2">
+                                    </div>
+                                    <div>
+                                        <label>Last Name *</label>
+                                        <input type="text" id="txt-user-last-name"
+                                            class="form-control required capsAllText" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="form-fields inline">
+                                    <div>
+                                        <label>Date of Birth *</label>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <span class="fa fa-calendar"></span>
+                                            </div>
+                                            <input type="text" id="dp-user-birthdate" class="form-control required"
+                                                placeholder="MM/DD/YYYY">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label>Gender *</label>
+                                        <div class="form-radio">
+                                            <div id="rdo-user-male" class="radio-btn selected">Male</div>
+                                            <div id="rdo-user-female" class="radio-btn">Female</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-fields inline">
+                                    <div>
+                                        <label>Nationality *</label>
+                                        <select id="sel-user-nationality"
+                                            class="form-control required capsAllText"></select>
+                                    </div>
+                                    <div>
+                                        <label>TIN *</label>
+                                        <input type="text" id="txt-tin" class="form-control required tin"
+                                            placeholder="XXX-XXX-XXX" maxlength="15">
+                                    </div>
+                                </div>
+                                <div class="form-fields inline">
+                                    <div>
+                                        <label>Phone No. *</label>
+                                        <input type="text" id="txt-user-phone-no"
+                                            class="form-control required numbersWithoutDecimal" placeholder="Phone No.">
+                                    </div>
+                                    <div>
+                                        <label>Email *</label>
+                                        <input type="text" id="txt-user-email" class="form-control required email"
+                                            placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-separator"></div>
+                                <div class="form-fields inline">
+                                    <div>
+                                        <label>House/Unit No. *</label>
+                                        <input type="text" id="txt-user-unit-no"
+                                            class="form-control required capsAllText" placeholder="House/Unit No.">
+                                    </div>
+                                    <div>
+                                        <label>Street Name *</label>
+                                        <input type="text" id="txt-user-street-name"
+                                            class="form-control required capsAllText" placeholder="Street Name">
+                                    </div>
+                                </div>
+                                <div class="form-fields inline">
+                                    <div class="autocomplete">
+                                        <label>Province *</label>
+                                        <input type="text" id="txt-user-province"
+                                            class="form-control required capsAllText" placeholder="Province">
+                                    </div>
+                                    <div class="autocomplete">
+                                        <label>City *</label>
+                                        <input type="text" id="txt-user-city" class="form-control capsAllText"
+                                            placeholder="City" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-fields inline">
+                                    <div class="autocomplete">
+                                        <label>Barangay *</label>
+                                        <input type="text" id="txt-user-barangay" class="form-control capsAllText"
+                                            placeholder="Barangay" disabled>
+                                    </div>
+                                    <div>
+                                        <label>ZIP Code *</label>
+                                        <input type="text" id="txt-user-zip-code" class="form-control"
+                                            placeholder="ZIP Code" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-separator"></div>
+                                <div class="form-fields inline">
+                                    <div>
+                                        <label>Beneficiary</label>
+                                        <input type="text" id="txt-user-beneficiary" class="form-control capsAllText"
+                                            placeholder="Beneficiary's Full Name">
+                                    </div>
+                                    <div class="no-label">
+                                        <input type="text" id="txt-user-beneficiary-phone-no"
+                                            class="form-control numbersWithoutDecimal"
+                                            placeholder="Beneficiary's Phone No.">
+                                    </div>
+                                </div>
+                                <div class="form-button">
+                                    <button id="user-dtls-save-btn" style="padding: 5px 40px;">Save</button>
+                                </div>
+                            </div>
+                            <div id="passenger-form">
+                                <div id="pass-remaining" style="margin-bottom: 25px; font-size: 12px;">
+                                    <label>Remaining Passengers to Add:</label>
+                                    <label id="pass-limit"></label>
+                                </div>
+                                <div id="pass-count-to-delete" style="margin-bottom: 25px; font-size: 12px;">
+                                    <label>Remaining Passengers to Delete:</label>
+                                    <label id="pass-delete-count"></label>
+                                </div>
+                                <div id="passenger-list">
+                                    <div class="passenger-list-box add-btn" title="Add Passenger">
+                                        <div id="add-passenger" class="passenger-logo">
+                                            <div id="horizontal-plus"></div>
+                                            <div id="vertical-plus"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="passenger-list-btns">
+                                    <div class="form-fields" style="display: flex; justify-content: center;">
+                                        <div id="rdo-select-all" class="radio-btn">Select All</div>
+                                        <div id="rdo-deselect-all" class="radio-btn">Deselect All</div>
+                                        <div id="rdo-delete" class="radio-btn">Delete</div>
+                                    </div>
+                                </div>
+                                <div id="passenger-info" style="margin-top: 20px;">
+                                    <div class="form-fields inline">
+                                        <div>
+                                            <label>First Name *</label>
+                                            <input type="text" id="txt-psngr-first-name"
+                                                class="form-control required capsAllText" placeholder="First Name">
+                                        </div>
+                                        <div>
+                                            <label>Middle Initial</label>
+                                            <input type="text" id="txt-psngr-middle-initial"
+                                                class="form-control capsAllText" placeholder="Middle Initial"
+                                                maxlength="2">
+                                        </div>
+                                        <div>
+                                            <label>Last Name *</label>
+                                            <input type="text" id="txt-psngr-last-name"
+                                                class="form-control required capsAllText" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-fields inline">
+                                        <div>
+                                            <label>Date of Birth *</label>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </div>
+                                                <input type="text" id="dp-psngr-birthdate" class="form-control required"
+                                                    placeholder="mm/dd/yyyy">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label>Gender *</label>
+                                            <div class="form-radio">
+                                                <div id="rdo-psngr-male" class="radio-btn selected">Male</div>
+                                                <div id="rdo-psngr-female" class="radio-btn">Female</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-fields inline">
+                                        <div>
+                                            <label>Nationality *</label>
+                                            <select class="form-control required" id="sel-psngr-nationality"></select>
+                                        </div>
+                                        <div>
+                                            <input type="hidden">
+                                        </div>
+                                    </div>
+                                    <div class="form-separator"></div>
+                                    <div class="form-fields inline">
+                                        <div>
+                                            <label>Beneficiary</label>
+                                            <input type="text" id="txt-psngr-beneficiary"
+                                                class="form-control capsAllText" placeholder="Beneficiary's Full Name">
+                                        </div>
+                                        <div class="no-label">
+                                            <input type="text" id="txt-psngr-beneficiary-phone-no"
+                                                class="form-control numbersWithoutDecimal"
+                                                placeholder="Beneficiary's Phone No.">
+                                        </div>
+                                    </div>
+                                    <div class="form-button">
+                                        <button id="passenger-dtls-save-btn" style="padding: 5px 40px;">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div id="bill-dtls-btn" class="menu disabled">
+                        <div class="menu-logo"><i class="fa fa-credit-card"></i></div>
+                        <div class="menu-label">Billing Information</div>
+                    </div>
+                    <div id="bill-dtls" class="detail">
+                        <div class="form-fields inline">
+                            <div>
+                                <label>First Name *</label>
+                                <input type="text" id="txt-bill-first-name" class="form-control required capsAllText"
+                                    placeholder="First Name">
+                            </div>
+                            <div>
+                                <label>Middle Initial</label>
+                                <input type="text" id="txt-bill-middle-initial" class="form-control capsAllText"
+                                    placeholder="Middle Initial" maxlength="2">
+                            </div>
+                            <div>
+                                <label>Last Name *</label>
+                                <input type="text" id="txt-bill-last-name" class="form-control required capsAllText"
+                                    placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>Phone No. *</label>
+                                <input type="text" id="txt-bill-phone-no"
+                                    class="form-control required numbersWithoutDecimal" placeholder="Phone No.">
+                            </div>
+                            <div>
+                                <label>Email *</label>
+                                <input type="text" id="txt-bill-email" class="form-control required email"
+                                    placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-separator"></div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>House/Unit No. *</label>
+                                <input type="text" id="txt-bill-unit-no" class="form-control required capsAllText"
+                                    placeholder="House/Unit No.">
+                            </div>
+                            <div>
+                                <label>Street Name *</label>
+                                <input type="text" id="txt-bill-street-name" class="form-control required capsAllText"
+                                    placeholder="Street Name">
+                            </div>
+                        </div>
+                        <div class="form-fields inline">
+                            <div class="autocomplete">
+                                <label>Province *</label>
+                                <input type="text" id="txt-bill-province" class="form-control required"
+                                    placeholder="Province">
+                            </div>
+                            <div class="autocomplete">
+                                <label>City *</label>
+                                <input type="text" id="txt-bill-city" class="form-control" placeholder="City" disabled>
+                            </div>
+                        </div>
+                        <div class="form-fields inline">
+                            <div class="autocomplete">
+                                <label>Barangay *</label>
+                                <input type="text" id="txt-bill-barangay" class="form-control" placeholder="Barangay"
+                                    disabled>
+                            </div>
+                            <div>
+                                <label>ZIP Code *</label>
+                                <input type="text" id="txt-bill-zip-code" class="form-control" placeholder="ZIP Code"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="form-button">
+                            <button id="bill-save-btn">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="form-summary">
+                <div class="menu">
+                    <div class="menu-label">Summary</div>
+                    <div class="menu-logo"><i class="fa fa-file-text-o"></i></div>
+                </div>
+                <div class="detail">
+                    <div class="summary-per-dtl">
+                        <div class="summary-title">
+                            <div class="summary-number">1</div>
+                            <div class="summary-header-title">Travel Details</div>
+                        </div>
+                        <div id="travel-dtls-summary" class="summary-dtls">
+                            - No details yet
+                        </div>
+                    </div>
+                    <div class="summary-per-dtl">
+                        <div class="summary-title">
+                            <div class="summary-number">2</div>
+                            <div class="summary-header-title">Plan Selection</div>
+                        </div>
+                        <div id="plan-dtls-summary" class="summary-dtls">
+                            - No details yet
+                        </div>
+                    </div>
+                    <div class="summary-per-dtl">
+                        <div class="summary-title">
+                            <div class="summary-number">3</div>
+                            <div class="summary-header-title">My Details</div>
+                        </div>
+                        <div class="summary-dtls">
+                            <div id="my-dtls-user-summary">
+                                - No details yet
+                            </div>
+                            <div id="my-dtls-passenger-summary" style="margin-top: 15px;">
+                                <div class="form-separator" style="background: #000;"></div>
+                                <div id="my-dtls-passenger-summary-info" style="overflow-y: auto; max-height: 200px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-per-dtl">
+                        <div class="summary-title">
+                            <div class="summary-number">4</div>
+                            <div class="summary-header-title">Billing Information</div>
+                        </div>
+                        <div id="bill-dtls-summary" class="summary-dtls">
+                            - No details yet
+                        </div>
+                    </div>
+                    <div id="summary-confirm-dtl">
+                        <div style="background: #FFF; height: 3px;"></div>
+                        <div style="text-align: center; font-size: 11px; padding: 15px 20px;">
+                            Kindly review and confirm the details above before you proceed with your application. Once
+                            all
+                            the details are correct, you may click the Confirm button.
+                        </div>
+                        <div id="paynamics-form" style="display: none;">
+                            <form action="https://testpti.payserv.net/webpayment/Default.aspx" method="POST">
+                                <input type="text" name="paymentrequest">
+                                <input type="submit">
+                            </form>
+                        </div>
+                        <div class="form-button" style="text-align: center; margin: 10px 0;">
+                            <button id="confirm-btn" style="padding-left: 40px; padding-right: 40px;">Confirm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2019 All Right Reserved. Design & Development By <a href="../index.html">Computer Professionals
+                Inc.</a></p>
+    </footer>
+
+    <div id="goToTop">
+        <i class="fa fa-angle-double-up"></i>
+    </div>
+</body>
+
+</html>

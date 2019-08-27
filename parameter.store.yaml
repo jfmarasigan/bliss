@@ -1,0 +1,78 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Parameter Store creation for EProducts
+
+Parameters:
+  CompanyNameParam:
+    Type: String
+    Description: Full/abbreviated name of company
+  DatabaseHostParam:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: String defining the host path for the E-Products database
+  DatabasePortParam:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: String defining the port set used by the E-Products database
+  DatabaseNameCTPLParam:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: String defining the schema name used by CTPL Application inside the E-Products database
+  DatabaseNameTravelParam:
+    Type: AWS::SSM::Parameter::Value<String>
+    Description: String defining the schema name used by Travel Application inside the E-Products database
+
+Resources:
+  DatabaseHost:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name:
+        Fn::Sub:
+          - /bliss/${CompanyName}/db/host
+          - { CompanyName: !Ref CompanyNameParam }
+      Type: "String"
+      Value:
+        Ref: DatabaseHostParam
+      Description: "MySQL (Non Aurora) database host name for E Products"
+      Tier: Standard
+  DatabasePort:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name:
+        Fn::Sub:
+          - /bliss/${CompanyName}/db/port
+          - { CompanyName: !Ref CompanyNameParam }
+      Type: "String"
+      Value:
+        Ref: DatabasePortParam
+      Description: "MySQL (Non Aurora) database port for E Products"
+      Tier: "Standard"
+  DatabaseNameCTPL:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name:
+        Fn::Sub:
+          - /bliss/${CompanyName}/db/ctpl/database
+          - { CompanyName: !Ref CompanyNameParam }
+      Type: "String"
+      Value:
+        Ref: DatabaseNameCTPLParam
+      Description: "MySQL (Non Aurora) database used for ECTPL for E Products"
+      Tier: "Standard"
+  DatabaseNameTravel:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name:
+        Fn::Sub:
+          - /bliss/${CompanyName}/db/travel/database
+          - { CompanyName: !Ref CompanyNameParam }
+      Type: "String"
+      Value:
+        Ref: DatabaseNameTravelParam
+      Description: "MySQL (Non Aurora) database used for Travel for E Products"
+      Tier: "Standard"
+  CompanyName:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: "/bliss/company-name"
+      Type: "String"
+      Value:
+        Ref: CompanyNameParam
+      Description: "Company Name"
+      Tier: "Standard"

@@ -1,0 +1,43 @@
+.multi-carousel {
+    float: left;
+    overflow: hidden;
+    padding: 15px;
+    padding-top: 0;
+    width: 100%;
+    position: relative;
+}
+
+.multi-carousel .multi-carousel-inner {
+    float: left;
+    position: relative;
+}
+
+.multi-carousel .multi-carousel-inner .item {
+    float: left;
+}
+
+.multi-carousel .multi-carousel-inner .item>div {
+    text-align: center;
+}
+
+.multi-carousel .leftLst, .multi-carousel .rightLst {
+    position: absolute;
+    border-radius: 50%;
+    top: calc(50% - 20px);
+    height: 30px;
+    width: 30px;
+    padding: 0;
+}
+
+.multi-carousel .leftLst {
+    left: 0;
+}
+
+.multi-carousel .rightLst {
+    right: 0;
+}
+
+.multi-carousel .leftLst.over, .multi-carousel .rightLst.over {
+    pointer-events: none;
+    background: #ccc;
+}

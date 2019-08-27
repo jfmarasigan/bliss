@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AWS - CPI &#8739; CTPL [Application]</title>
+
+    <link rel="icon" href="../images/car.png" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
+    <link rel="stylesheet" href="../css/keyframes.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/color/color-1.css">
+    <link rel="stylesheet" href="../css/pages/apply.css">
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap-datepicker.js"></script>
+    <script src="../js/wow.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/pages/apply.js"></script>
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="single-loader one"></div>
+            <div class="single-loader two"></div>
+            <div class="single-loader three"></div>
+            <div class="single-loader four"></div>
+            <div class="single-loader five"></div>
+            <div class="single-loader six"></div>
+            <div class="single-loader seven"></div>
+            <div class="single-loader eight"></div>
+            <div class="single-loader nine"></div>
+        </div>
+    </div>
+
+    <div style="float: left; height: 100%; width: 100%; background-color: #000; margin: 0; position: fixed; left: 0; top: 0; opacity: 0.4; z-index: 90000000; display: none;"
+        id="noticeOverlay"></div>
+    <div id="notice" name="notice">
+        <table style="margin: 0 auto;">
+            <tr id="noticeLoadingImg">
+                <td style="text-align: center;">
+                    <img src="../images/loading.gif" width="220px" height="19px" />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center; font-size: 14px;">
+                    <label id="noticeMessage" style="width: 100%; text-align: center;"></label>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="../index.html" class="navbar-brand"><img src="../images/company-logo.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse-main">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="../index.html">Back to Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="form">
+        <div class="container">
+            <div class="form-steps">
+                <h3>Compulsory Third Party Liability (CTPL) Form</h3>
+                <p><b>Note:</b> (*) Required fields.</p>
+                <div class="steps">
+                    <div id="policyDetailsStep" class="steps-box active">
+                        <label>Policy Details</label>
+                        <div class="steps-logo">
+                            <i class="fa fa-file"></i>
+                        </div>
+                    </div>
+                    <div id="vehicleDetailsStep" class="steps-box disabled">
+                        <label>Vehicle Details</label>
+                        <div class="steps-logo">
+                            <i class="fa fa-car"></i>
+                        </div>
+                    </div>
+                    <div id="registrationDetailsStep" class="steps-box disabled">
+                        <label>Registration Details</label>
+                        <div class="steps-logo">
+                            <i class="fa fa-id-card-o"></i>
+                        </div>
+                    </div>
+                    <div id="personalDetailsStep" class="steps-box disabled">
+                        <label>Personal Details</label>
+                        <div class="steps-logo">
+                            <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <div id="summaryDetailsStep" class="steps-box disabled">
+                        <label>Summary Details</label>
+                        <div class="steps-logo">
+                            <i class="fa fa-list-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="steps-mobile">
+                    <select class="form-control" id="selMobile">
+                        <option value="1">Policy Details</option>
+                        <option value="2" disabled>Vehicle Details</option>
+                        <option value="3" disabled>Registration Details</option>
+                        <option value="4" disabled>Personal Details</option>
+                        <option value="5" disabled>Summary Details</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-content">
+                <div id="policyDetailsContent">
+                    <div class="content-header">
+                        Policy Details
+                    </div>
+                    <div class="content">
+                        <div class="form-fields">
+                            <div class="fieldset">
+                                <div class="fieldset-title">Registration Type</div>
+                                <div>
+                                    <input type="radio" name="radio-group" id="rdoNewApplication" checked>
+                                    <label for="rdoNewApplication">New Application</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="radio-group" id="rdoRenewal">
+                                    <label for="rdoRenewal">Renewal</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-fields">
+                            <label>Policy Type *</label>
+                            <select class="form-control required" id="selPolicyType"></select>
+                        </div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>MV Type *</label>
+                                <select class="form-control required" id="selMvType"></select>
+                            </div>
+                            <div>
+                                <label>MV Premium Type *</label>
+                                <select class="form-control required" id="selMvPremType">
+                                    <option value="">SELECT MV TYPE FIRST</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>Inception Date *</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </div>
+                                    <input type="text" id="dpInceptionDate" class="form-control required"
+                                        placeholder="MM/DD/YYYY">
+                                </div>
+                            </div>
+                            <div>
+                                <label>Expiry Date</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </div>
+                                    <input type="text" id="dpExpiryDate" class="form-control" placeholder="MM/DD/YYYY"
+                                        readOnly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-fields">
+                            <label>Premium Amount: <span class="amount">&#8369;0.00</span></label>
+                        </div>
+                    </div>
+                    <div class="content-button">
+                        <button class="btn btn-info" id="btnPolicyDetailsNext">Next</button>
+                    </div>
+                </div>
+                <div id="vehicleDetailsContent">
+                    <div class="content-header">
+                        Vehicle Details
+                    </div>
+                    <div class="content">
+                        <div class="form-fields inline">
+                            <div>
+                                <label>Year Model *</label>
+                                <select class="form-control required" id="selYearModel"></select>
+                            </div>
+                            <div>
+                                <label>Car Company *</label>
+                                <select class="form-control required" id="selCarCompany">
+                                    <option value="">SELECT</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>Make *</label>
+                                <select class="form-control required" id="selMake">
+                                    <option value="">SELECT CAR COMPANY FIRST</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Variant/Engine Series *</label>
+                                <select class="form-control required" id="selVariant">
+                                    <option value="">SELECT MAKE FIRST</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-fields">
+                            <label>Color *</label>
+                            <input type="text" id="txtColor" class="form-control required capsAllText">
+                        </div>
+                    </div>
+                    <div class="content-button">
+                        <button class="btn btn-info" id="btnVehicleDetailsNext">Next</button>
+                    </div>
+                </div>
+                <div id="registrationDetailsContent">
+                    <div class="content-header">
+                        Registration Details
+                    </div>
+                    <div class="content">
+                        <div class="form-fields">
+                            <p><b>Note:</b> This information can be found on your <i>LTO Certificate of
+                                    Registration.</i></p>
+                        </div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>Plate Number *</label>
+                                <input type="text" id="txtPlateNo" class="form-control required capsAllText"
+                                    maxlength="10">
+                            </div>
+                            <div>
+                                <label>Serial/Chassis Number *</label>
+                                <input type="text" id="txtSerialNo" class="form-control required capsAllText"
+                                    maxlength="25">
+                            </div>
+                        </div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>Engine/Motor Number *</label>
+                                <input type="text" id="txtEngineNo" class="form-control required capsAllText"
+                                    maxlength="30">
+                            </div>
+                            <div>
+                                <label>MV File Number *</label>
+                                <input type="text" id="txtMvFileNo" class="form-control required capsAllText"
+                                    maxlength="15">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-button">
+                        <button class="btn btn-info" id="btnRegistrationDetailsNext">Next</button>
+                    </div>
+                </div>
+                <div id="personalDetailsContent">
+                    <div class="content-header">
+                        Personal Details
+                    </div>
+                    <div class="content">
+                        <div class="form-fields">
+                            <label>Type *</label>
+                            <select class="form-control required" id="selType">
+                                <option value="1">INDIVIDUAL</option>
+                                <option value="2">CORPORATE WITHOUT ASSIGNEE</option>
+                                <option value="3">CORPORATE WITH ASSIGNEE</option>
+                            </select>
+                        </div>
+                        <div id="individual-div">
+                            <div class="form-fields inline name">
+                                <div>
+                                    <label>First Name *</label>
+                                    <input type="text" id="txtIndividualFirstName"
+                                        class="form-control required capsAllText">
+                                </div>
+                                <div>
+                                    <label>Middle Initial</label>
+                                    <input type="text" id="txtIndividualMiddleInitial" class="form-control capsAllText"
+                                        maxlength="2">
+                                </div>
+                                <div>
+                                    <label>Last Name *</label>
+                                    <input type="text" id="txtIndividualLastName"
+                                        class="form-control required capsAllText">
+                                </div>
+                            </div>
+                            <div class="form-fields inline">
+                                <div>
+                                    <label>Date of Birth *</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <span class="fa fa-calendar"></span>
+                                        </div>
+                                        <input type="text" id="dpBirthdate" class="form-control required"
+                                            placeholder="MM/DD/YYYY">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label>Gender *</label>
+                                    <select class="form-control required" id="selGender">
+                                        <option value="M" selected>MALE</option>
+                                        <option value="F">FEMALE</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-fields inline">
+                                <div>
+                                    <label>Email Address *</label>
+                                    <input type="text" id="txtIndividualEmailAddress"
+                                        class="form-control required email">
+                                </div>
+                                <div>
+                                    <label>Address *</label>
+                                    <input type="text" id="txtIndividualAddress"
+                                        class="form-control required capsAllText">
+                                </div>
+                                <div>
+                                    <label>ZIP Code *</label>
+                                    <input type="text" id="txtIndividualZipCode"
+                                        class="form-control required numbersWithoutDecimal">
+                                </div>
+                            </div>
+                            <div class="form-fields inline">
+                                <div>
+                                    <label>Phone No *</label>
+                                    <input type="text" id="txtIndividualPhoneNo"
+                                        class="form-control required numbersWithoutDecimal">
+                                </div>
+                                <div>
+                                    <label>TIN *</label>
+                                    <input type="text" id="txtIndividualTin" class="form-control required tin"
+                                        placeholder="XXX-XXX-XXX" maxlength="15">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cwoa-div">
+                            <div class="form-fields">
+                                <label>Corporate Name *</label>
+                                <input type="text" id="txtCwoaCorporateName" class="form-control required capsAllText">
+                            </div>
+                            <div class="form-fields inline">
+                                <div>
+                                    <label>Email Address *</label>
+                                    <input type="text" id="txtCwoaEmailAddress" class="form-control required email">
+                                </div>
+                                <div>
+                                    <label>Address *</label>
+                                    <input type="text" id="txtCwoaAddress" class="form-control required capsAllText">
+                                </div>
+                                <div>
+                                    <label>ZIP Code *</label>
+                                    <input type="text" id="txtCwoaZipCode"
+                                        class="form-control required numbersWithoutDecimal">
+                                </div>
+                            </div>
+                            <div class="form-fields inline">
+                                <div>
+                                    <label>Phone No *</label>
+                                    <input type="text" id="txtCwoaPhoneNo"
+                                        class="form-control required numbersWithoutDecimal">
+                                </div>
+                                <div>
+                                    <label>TIN *</label>
+                                    <input type="text" id="txtCwoaTin" class="form-control required tin"
+                                        placeholder="XXX-XXX-XXX" maxlength="15">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cwa-div">
+                            <div class="form-fields">
+                                <label>Corporate Name *</label>
+                                <input type="text" id="txtCwaCorporateName" class="form-control required capsAllText">
+                            </div>
+                            <div class="form-fields inline name">
+                                <div>
+                                    <label>First Name *</label>
+                                    <input type="text" id="txtCwaFirstName" class="form-control required capsAllText">
+                                </div>
+                                <div>
+                                    <label>Middle Initial</label>
+                                    <input type="text" id="txtCwaMiddleInitial" class="form-control capsAllText"
+                                        maxlength="2">
+                                </div>
+                                <div>
+                                    <label>Last Name *</label>
+                                    <input type="text" id="txtCwaLastName" class="form-control required capsAllText">
+                                </div>
+                            </div>
+                            <div class="form-fields inline">
+                                <div>
+                                    <label>Email Address *</label>
+                                    <input type="text" id="txtCwaEmailAddress" class="form-control required email">
+                                </div>
+                                <div>
+                                    <label>Address *</label>
+                                    <input type="text" id="txtCwaAddress" class="form-control required capsAllText">
+                                </div>
+                                <div>
+                                    <label>ZIP Code *</label>
+                                    <input type="text" id="txtCwaZipCode"
+                                        class="form-control required numbersWithoutDecimal">
+                                </div>
+                            </div>
+                            <div class="form-fields inline">
+                                <div>
+                                    <label>Phone No *</label>
+                                    <input type="text" id="txtCwaPhoneNo"
+                                        class="form-control required numbersWithoutDecimal">
+                                </div>
+                                <div>
+                                    <label>TIN *</label>
+                                    <input type="text" id="txtCwaTin" class="form-control required tin"
+                                        placeholder="XXX-XXX-XXX" maxlength="15">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-button">
+                        <button class="btn btn-info" id="btnPersonalDetailsNext">Next</button>
+                    </div>
+                </div>
+                <div id="summaryDetailsContent">
+                    <div class="content-header">
+                        Summary Details
+                    </div>
+                    <div class="content">
+                        <div class="form-fields">
+                            <p>Kindly review and confirm the details below before you proceed with your application.
+                                Once all the details are correct, you may click the <b>Confirm</b> button.</p>
+                        </div>
+                        <div class="form-fields">
+                            <h4>Client Information</h4>
+                            <div class="table-div">
+                                <table id="tbIndividual" class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>Name</th>
+                                            <td colspan="3" id="tdName"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Date of Birth</th>
+                                            <td id="tdBirthdate"></td>
+                                            <th>Gender</td>
+                                            <td id="tdGender"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td id="tdIndividualAddress"></td>
+                                            <th>Email Address</td>
+                                            <td id="tdIndividualEmailAddress"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Phone No.</th>
+                                            <td id="tdIndividualPhoneNo"></td>
+                                            <th>TIN</td>
+                                            <td id="tdIndividualTin"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-div">
+                                <table id="tbCwoa" class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>Corporate Name</th>
+                                            <td colspan="3" id="tdCwoaCorporateName"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td id="tdCwoaAddress"></td>
+                                            <th>Email Address</td>
+                                            <td id="tdCwoaEmailAddress"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Phone No.</th>
+                                            <td id="tdCwoaPhoneNo"></td>
+                                            <th>TIN</td>
+                                            <td id="tdCwoaTin"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-div">
+                                <table id="tbCwa" class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>Corporate Name</th>
+                                            <td colspan="3" id="tdCwaCorporateName"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Assignee</th>
+                                            <td colspan="3" id="tdAssignee"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td id="tdCwaAddress"></td>
+                                            <th>Email Address</td>
+                                            <td id="tdCwaEmailAddress"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Phone No.</th>
+                                            <td id="tdCwaPhoneNo"></td>
+                                            <th>TIN</td>
+                                            <td id="tdCwaTin"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-fields">
+                            <h4>Vehicle Information</h4>
+                            <div class="table-div">
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>Year Model</th>
+                                            <td id="tdYearModel"></td>
+                                            <th>Color</td>
+                                            <td id="tdColor"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Vehicle Maker</th>
+                                            <td id="tdVehicleMaker"></td>
+                                            <th>Series</td>
+                                            <td id="tdSeries"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>MV File Number</th>
+                                            <td id="tdMvFileNo"></td>
+                                            <th>Plate Number</td>
+                                            <td id="tdPlateNo"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Serial / Chassis</th>
+                                            <td id="tdSerial"></td>
+                                            <th>Motor Number</td>
+                                            <td id="tdMotorNo"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-fields">
+                            <h4>Policy Information</h4>
+                            <div class="table-div">
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>Registration Type</th>
+                                            <td id="tdRegistrationType"></td>
+                                            <th>Policy Type</td>
+                                            <td id="tdPolicyType"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>MV Type</th>
+                                            <td id="tdMvType"></td>
+                                            <th>MV Premium Type</td>
+                                            <td id="tdMvPremType"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-fields">
+                            <div class="table-div">
+                                <table class="table table-striped table-bordered amount-table">
+                                    <tbody>
+                                        <tr>
+                                            <th>Premium Amount</th>
+                                            <td id="tdPremAmount"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Taxes and Charges</th>
+                                            <td id="tdTaxAmount"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total Amount Due</th>
+                                            <td id="tdTotalAmountDue"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-header">
+                        Billing Information
+                    </div>
+                    <div class="content bill-content" style="margin-bottom: 0;">
+                        <div class="form-fields inline name">
+                            <div>
+                                <label>First Name *</label>
+                                <input type="text" id="txtBillFirstName" class="form-control required capsAllText">
+                            </div>
+                            <div>
+                                <label>Middle Name</label>
+                                <input type="text" id="txtBillMiddleName" class="form-control capsAllText">
+                            </div>
+                            <div>
+                                <label>Last Name *</label>
+                                <input type="text" id="txtBillLastName" class="form-control required capsAllText">
+                            </div>
+                        </div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>Email Address *</label>
+                                <input type="text" id="txtBillEmailAddress" class="form-control required email">
+                            </div>
+                            <div>
+                                <label>Address *</label>
+                                <input type="text" id="txtBillAddress" class="form-control required capsAllText">
+                            </div>
+                        </div>
+                        <div class="form-fields inline">
+                            <div>
+                                <label>Phone No *</label>
+                                <input type="text" id="txtBillPhoneNo"
+                                    class="form-control required numbersWithoutDecimal">
+                            </div>
+                            <div>
+                                <label>ZIP Code *</label>
+                                <input type="text" id="txtBillZipCode"
+                                    class="form-control required numbersWithoutDecimal">
+                            </div>
+                        </div>
+                        <div id="paynamics-form" style="display: none;">
+                            <form action="https://testpti.payserv.net/webpayment/Default.aspx" method="POST">
+                                <input type="text" name="paymentrequest">
+                                <input type="submit">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="content-button" style="position: relative; text-align: center;">
+                        <button class="btn btn-info" id="btnConfirm">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2019 All Right Reserved. Design & Development By <a href="../index.html">Computer Professionals
+                Inc.</a></p>
+    </footer>
+
+    <div id="goToTop">
+        <i class="fa fa-angle-double-up"></i>
+    </div>
+</body>
+
+</html>

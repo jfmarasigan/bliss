@@ -1,0 +1,100 @@
+.navbar {
+    background: transparent;
+    transition: .5s all;
+}
+
+#banner {
+    background: url(../../images/banner.jpg) no-repeat center fixed;
+    background-size: cover;
+    height: 630px;
+    width: 100%;
+    text-align: center;
+}
+
+#banner-logo {
+    margin-top: 188px;
+}
+
+#banner-logo img {
+    width: 180px;
+    height: 80px;
+}
+
+#banner-text {
+    color: #FFF;
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-transform: lowercase;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+section:not(#banner) {
+    padding: 80px 0;
+}
+
+#features {
+    background: #D8EAFA;
+}
+
+.header-title {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 45px;
+    color: #333;
+    text-align: center;
+    position: relative;
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+.header-title::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #3C6488;
+}
+
+.feature-box {
+    padding: 20px 0;
+    border-bottom: 1px solid #99BBD8;
+    display: table;
+    width: 100%
+}
+
+.feature-box:last-of-type {
+    border-bottom: none;
+}
+
+.feature-box img, .feature-box h3, .feature-box .desc {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.feature-box img {
+    width: 60px;
+    float: left;
+}
+
+.feature-box h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    width: 272px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.desc {
+    padding-left: 30px;
+}
+
+.desc p {
+    margin: 0;
+    font-size: 16px;
+}

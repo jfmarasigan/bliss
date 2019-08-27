@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Policy WarrClauses" language="groovy" pageWidth="360" pageHeight="100" columnWidth="360" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="aeebcb87-7dd8-4a82-b719-954aa6ae3879">
+	<property name="ireport.zoom" value="4.09808073219044"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_POLICY_ID" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT b.wc_title
+  FROM EPIT_TRAVEL_POLBASIC a,
+       EPIM_WARRCLA b,
+       EPIM_PLAN_PERIL c
+ WHERE policy_id = $P{P_POLICY_ID}
+   AND a.line_cd = b.line_cd
+   AND a.plan_cd = c.plan_cd
+   AND b.peril_cd = c.peril_cd]]>
+	</queryString>
+	<field name="wc_title" class="java.lang.String">
+		<fieldDescription><![CDATA[Identify the warranty/clauses title.]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="360" height="9" uuid="c0ee7dd4-887a-458e-bf48-e9eac0149e1f"/>
+				<textElement>
+					<font size="7" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{wc_title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

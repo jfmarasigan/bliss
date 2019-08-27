@@ -1,0 +1,135 @@
+footer p a {
+    color: #349EC4;
+}
+
+.nav li a, footer, footer p a:hover, #goToTop {
+    color: #FFF !important;
+}
+
+.success, .error {
+    color: #FFF;
+}
+
+.apply-btn:hover {
+    color: #333 !important;
+}
+
+#btnExit:hover {
+    color: #349EC4;
+}
+
+#process-box, #btnExit:hover {
+    background: #146681;
+}
+
+.navbar, .navbar.scroll, footer {
+    background: #333;
+}
+
+.preloader-inner .single-loader, .nav li a::before, .apply-btn, #goToTop, #btnExit {
+    background: #349EC4;
+}
+
+.success {
+    background: #4CAF50;
+}
+
+.error {
+    background: #AF4C4C;
+}
+
+#note {
+    background: #D5DBDB;
+}
+
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+    background: #FFC7C7;
+}
+
+.apply-btn:hover {
+    background: #FFF !important;
+}
+
+.preloader {
+    background: #FFF;
+}
+
+/* ============================================================================ */
+
+/* APPLY HTML */
+
+.menu.disabled {
+    background: #A1C1E1;
+}
+
+.form-separator {
+    background: #CCC;
+}
+
+.passenger-logo {
+    background: #DEDEDE;
+}
+
+#passenger-list-btns .radio-btn:hover, .detail, .white-form .form-button button:not(.disabled):hover {
+    background: #D8D8D8;
+}
+
+.select-passenger, .summary-number, .white-form, .radio-btn {
+    background: #FFF;
+}
+
+.update-passenger:hover {
+    background: #03912D;
+}
+
+.login-user-option:hover, .form-box .menu:not(.disabled):hover {
+    background: #2E659C;
+}
+
+#passenger-list-btns .radio-btn, .menu, .radio-btn:not(.disabled):hover, .radio-btn.selected {
+    background: #4181C2;
+}
+
+.login-user-option {
+    background: #428BCA;
+}
+
+#horizontal-plus, #vertical-plus {
+    background: #5E5E5E;
+}
+
+.delete-passenger:hover {
+    background: #910303;
+}
+
+.update-passenger, .delete-passenger {
+    background: #959595;
+}
+
+.passenger-logo.selected {
+    background: #922E2E8C;
+}
+
+.passenger-logo.current {
+    background: rgba(35, 122, 111, 0.549);
+}
+
+.radio-btn.disabled {
+    background: rgba(71, 71, 71, 0.445);
+}
+
+.login-user-option:hover, .form-button, .login-user-option p, .update-passenger i, .delete-passenger i, #passenger-list-btns .radio-btn, .menu, .radio-btn:not(.disabled):hover, .radio-btn.selected {
+    color: #FFF;
+}
+
+#passenger-list-btns .radio-btn:hover {
+    color: #000;
+}
+
+.select-passenger i {
+    color: #4181C2;
+}
+
+#passenger-limit {
+    color: #5E5E5E;
+}

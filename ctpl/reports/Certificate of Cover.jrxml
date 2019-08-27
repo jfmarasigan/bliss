@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Certificate of Cover" language="groovy" pageWidth="396" pageHeight="310" whenNoDataType="AllSectionsNoDetail" columnWidth="360" leftMargin="18" rightMargin="18" topMargin="18" bottomMargin="18" uuid="3a2fcc1c-6aa1-49c1-acc1-dd1b4bb31dee">
+	<property name="ireport.zoom" value="2.6573415000000797"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_POLICY_ID" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[CALL get_coc_report_dtls($P{P_POLICY_ID});]]>
+	</queryString>
+	<field name="policy_no" class="java.lang.String">
+		<fieldDescription><![CDATA[Unique identification of the transaction (syntax includes: line, subline, branch, year and sequence).]]></fieldDescription>
+	</field>
+	<field name="assured" class="java.lang.String"/>
+	<field name="assured_addr" class="java.lang.String"/>
+	<field name="coc_no" class="java.lang.String">
+		<fieldDescription><![CDATA[Assigned Certificate of Cover number to the vehicle.]]></fieldDescription>
+	</field>
+	<field name="issue_date" class="java.lang.String">
+		<fieldDescription><![CDATA[CTPL issue date using the format ‘YYYY-MM-DD’.]]></fieldDescription>
+	</field>
+	<field name="incept_date" class="java.lang.String"/>
+	<field name="expiry_date" class="java.lang.String">
+		<fieldDescription><![CDATA[CTPL expiry date using the format ‘YYYY-MM-DD’.]]></fieldDescription>
+	</field>
+	<field name="model_year" class="java.lang.String">
+		<fieldDescription><![CDATA[Year model of the vehicle.]]></fieldDescription>
+	</field>
+	<field name="make" class="java.lang.String">
+		<fieldDescription><![CDATA[Model/car make of the vehicle or conveyance.]]></fieldDescription>
+	</field>
+	<field name="type_of_body" class="java.lang.String">
+		<fieldDescription><![CDATA[Describes the vehicle's type of body or built.]]></fieldDescription>
+	</field>
+	<field name="color" class="java.lang.String">
+		<fieldDescription><![CDATA[Color of the vehicle.]]></fieldDescription>
+	</field>
+	<field name="mv_file_no" class="java.lang.String">
+		<fieldDescription><![CDATA[MV File Number of the vehicle.]]></fieldDescription>
+	</field>
+	<field name="plate_no" class="java.lang.String">
+		<fieldDescription><![CDATA[Plate Number of the vehicle.]]></fieldDescription>
+	</field>
+	<field name="serial_no" class="java.lang.String">
+		<fieldDescription><![CDATA[Chassis Serial Number of the vehicle.]]></fieldDescription>
+	</field>
+	<field name="motor_no" class="java.lang.String">
+		<fieldDescription><![CDATA[Engine/Motor Number of the vehicle.]]></fieldDescription>
+	</field>
+	<field name="no_of_pass" class="java.lang.Integer">
+		<fieldDescription><![CDATA[Number of passengers.]]></fieldDescription>
+	</field>
+	<field name="unladen_weight" class="java.lang.String"/>
+	<field name="sum_insured" class="java.lang.Double"/>
+	<field name="premium" class="java.lang.Double"/>
+	<field name="coc_atcn" class="java.lang.String">
+		<fieldDescription><![CDATA[COCAF Authentication Number of the vehicle.]]></fieldDescription>
+	</field>
+	<field name="company_tin" class="java.lang.String"/>
+	<field name="signatory_name" class="java.lang.String"/>
+	<field name="signatory_des" class="java.lang.String"/>
+	<field name="or_no" class="java.lang.String">
+		<fieldDescription><![CDATA[System-generated Official Receipt number.]]></fieldDescription>
+	</field>
+	<field name="company_name" class="java.lang.String"/>
+	<field name="company_addr" class="java.lang.String"/>
+	<field name="company_tel" class="java.lang.String"/>
+	<title>
+		<band height="48">
+			<frame>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="208" height="48" uuid="ebc63162-1cb4-424a-9f31-398b20492bc8"/>
+				<rectangle>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="208" height="48" uuid="36f8be35-42e8-4dfb-8b8d-e856cebd0202"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<elementGroup>
+					<image vAlign="Middle">
+						<reportElement x="10" y="8" width="139" height="32" uuid="e1df6a28-7a7f-4c1a-8585-41e694f2c9d3"/>
+						<imageExpression><![CDATA["https://s3-ap-southeast-1.amazonaws.com/cpi.eproducts.reports/cpi/ctpl/images/cpiinsurtechlogo.png"]]></imageExpression>
+					</image>
+					<rectangle>
+						<reportElement x="44" y="6" width="100" height="39" forecolor="#FFFFFF" uuid="d4d9fdfe-93ff-4562-9b76-b474ffd8d5b8"/>
+					</rectangle>
+				</elementGroup>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="42" y="4" width="156" height="14" uuid="063df637-1ac5-4acc-8022-f28dce0fe545"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{company_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="42" y="18" width="156" height="8" uuid="66fc2ff1-a917-46a2-9e1c-86c963efbb00"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{company_addr}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="42" y="26" width="156" height="8" uuid="b92c7317-f897-4fad-8e8e-899c27e94eaf"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{company_tel}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="42" y="34" width="156" height="8" uuid="f4e69a7d-e2c6-4516-9f2f-cbad90619886"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA["VAT REG TIN " + $F{company_tin}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="208" y="0" width="152" height="48" uuid="0ab6544d-1649-4af3-ad8e-5d22d42c0083"/>
+				<staticText>
+					<reportElement x="19" y="8" width="122" height="12" uuid="57bb8d58-0da0-47ec-ac26-e79dc777386e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[CONFIRMATION OF COVER]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="19" y="20" width="122" height="7" uuid="3bfe77e0-b172-402d-88a6-b7a68ed72792"/>
+					<textElement textAlignment="Center" verticalAlignment="Bottom">
+						<font fontName="SansSerif" size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[NON-LAND TRANSPORTATION OPERATORS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="19" y="27" width="122" height="7" uuid="c5238c9b-b63e-47e5-a2fd-5cdc205f6bc9"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[VEHICLE]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="217">
+			<frame>
+				<reportElement x="0" y="0" width="360" height="82" uuid="bac6ffdd-7f20-460c-90c1-75be3320667b"/>
+				<staticText>
+					<reportElement x="0" y="5" width="275" height="11" uuid="561daf0e-04fd-464a-9003-3c6f2718c93e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Authentication #:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="178" y="5" width="88" height="11" uuid="de491250-bd4c-46e2-9d1b-c01356b8f3d6"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{coc_atcn}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="275" y="0" width="85" height="18" uuid="f1c0ef69-5c9d-480c-877d-dd35d065c81a"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="277" y="2" width="83" height="7" uuid="06359b71-e449-4efd-a02b-18dd946872ab"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[POLICY NO.:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="275" y="9" width="85" height="7" uuid="9b99a066-e5dd-450d-ac49-88c099f9a4b4"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{policy_no}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="0" y="18" width="190" height="64" uuid="b4404df5-5a77-4a3b-8db3-b8d06599801d"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="11" y="21" width="179" height="7" uuid="33ebded0-2971-492f-b520-e10fd072c0e1"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[NAME AND ADDRESS OF INSURED]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="15" y="37" width="163" height="8" uuid="9ff2aedd-1c65-4b03-a268-e131c3e48952"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="6" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{assured}.toUpperCase()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="15" y="53" width="163" height="8" uuid="9b254c00-5b56-4d3f-8c35-c6553a9742ee"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{assured_addr}.toUpperCase()]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="190" y="18" width="85" height="18" uuid="4e42ab68-a862-45e6-8e61-78a8d034712c"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="192" y="20" width="83" height="7" uuid="ea29c918-e095-4a43-8d14-934f86be0b1d"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[BUSINESS/PROFESSION]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="275" y="18" width="85" height="18" uuid="b22b2178-83b9-41f4-aa11-84a57f1b3832"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="277" y="20" width="83" height="7" uuid="29fa9b7b-ad64-451b-b7dc-a25680abed93"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[CONFIRMATION OF COVER NO.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="275" y="27" width="85" height="7" uuid="739ecac7-dee2-405b-a075-30cba3854021"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{coc_no}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="190" y="36" width="85" height="18" uuid="0ff6d81d-2861-47d3-92f2-2b3dab12109c"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="192" y="38" width="83" height="7" uuid="089dad82-ec0c-44b6-809a-f2ffca2573f2"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[DATE ISSUED]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="190" y="45" width="85" height="7" uuid="bb5ad033-d866-4745-90e9-bd86c9b178ab"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{issue_date}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="275" y="36" width="85" height="18" uuid="aeca452c-d633-44bf-ba30-000bd9d8042c"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="277" y="38" width="83" height="7" uuid="700238b0-fd21-49f3-8db3-420bc61d2178"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[OFFICIAL RECEIPT NO.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="275" y="45" width="85" height="7" uuid="2949601d-fa14-44b0-811e-df6f71119add"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{or_no}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="190" y="54" width="170" height="10" uuid="dec65203-6938-47f5-a007-4c1fd85218d1"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="190" y="55" width="170" height="8" uuid="e3b2fe1a-25fa-4271-894b-9df55c7e3696"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[PERIOD OF INSURANCE]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="190" y="64" width="85" height="18" uuid="51054841-07d8-4a44-8096-d46977870eb3"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="192" y="66" width="83" height="7" uuid="fd7a254e-fcbd-48ce-898d-d9cfba2ae1ed"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[FROM 12:00 Noon]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="190" y="73" width="85" height="7" uuid="890ee7cb-b73b-43e2-8b55-558d251c58ce"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{incept_date}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="275" y="64" width="85" height="18" uuid="90ddbf19-4f80-41a7-9ebd-f9bfb6655d9d"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="277" y="66" width="83" height="7" uuid="74ff7665-3305-433b-b73f-340cbc0719bf"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[TO 12:00 Noon]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="275" y="73" width="85" height="7" uuid="4c728e16-5622-4692-bdd9-589b9d411173"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{expiry_date}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="0" y="82" width="360" height="47" uuid="c294728d-0001-4535-bdf3-8fbb700a0aa1"/>
+				<rectangle>
+					<reportElement x="0" y="0" width="360" height="11" uuid="79339177-dfe6-48e2-a903-c430326ea683"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="1" width="360" height="9" uuid="833c6794-c3dc-4593-ba40-f12653f10560"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="7" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[SCHEDULE VEHICLE]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="0" y="11" width="72" height="18" uuid="358c0a68-9aa4-4482-962a-9a53bb012bbc"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="2" y="13" width="70" height="7" uuid="5979df6e-3d50-48f9-8553-b0f54e33c972"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[MODEL]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="0" y="20" width="72" height="7" uuid="2c663567-ea61-4250-a57a-0e875bd2315b"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{model_year}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="72" y="11" width="72" height="18" uuid="c625e1f2-5766-426f-9226-b9a52ef9e687"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="74" y="13" width="70" height="7" uuid="304b448d-d7b1-4200-ab08-b383215911a8"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[MAKE]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="72" y="20" width="72" height="7" uuid="24424c7f-4acc-415c-abfe-ce2d891a860a"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{make}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="144" y="11" width="72" height="18" uuid="d8571100-cae5-4c2b-bee1-638c3fab21c6"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="146" y="13" width="70" height="7" uuid="59c56e92-41e5-4b56-96d3-9fae213ed6b1"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[TYPE OF BODY]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="144" y="20" width="72" height="7" uuid="f74a49f9-5353-43a6-b8dd-000969ec2343"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{type_of_body}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="216" y="11" width="72" height="18" uuid="3734ca27-9104-46b3-be2b-81c7a9f6af06"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="218" y="13" width="70" height="7" uuid="769ff443-1417-4a1f-91d6-702bd86236fb"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[COLOR]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="216" y="20" width="72" height="7" uuid="b0c80b01-71cb-4094-b335-482247806206"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{color}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="288" y="11" width="72" height="18" uuid="6b05b2eb-39f8-49c2-894c-9e452620f07d"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="290" y="13" width="70" height="7" uuid="d5738c89-8d69-483a-a002-d14380c09dfc"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[BLT FILE NO.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="288" y="20" width="72" height="7" uuid="89c63ff3-6909-4ab0-95a8-a874fa0279e9"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{mv_file_no}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="0" y="29" width="72" height="18" uuid="b8fc8252-5f90-4bd3-b40b-dcd982d01937"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="2" y="31" width="70" height="7" uuid="9e17d303-81f6-4e9a-8142-29086a17ff61"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[PLATE NO.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="0" y="38" width="72" height="7" uuid="07c7ca21-2084-4631-ac81-a199f2ab8f9d"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plate_no}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="72" y="29" width="72" height="18" uuid="c9e18420-a12e-4d64-a8fc-67bc8c42108e"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="74" y="31" width="70" height="7" uuid="29934942-c542-45ba-b8b9-104269619a4d"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[SERIAL/CHASSIS NO.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="72" y="38" width="72" height="7" uuid="8457508b-85ff-4999-ab5b-91efa0445a69"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{serial_no}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="144" y="29" width="72" height="18" uuid="7f59d004-05e1-4c81-a348-216d104c57a8"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="146" y="31" width="70" height="7" uuid="f888a873-e4ad-4ee7-b0ff-a79d3961b7f6"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[MOTOR NO.]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="144" y="38" width="72" height="7" uuid="a2c584ce-3c3b-4bb1-8c4f-f77147716ddb"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{motor_no}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="216" y="29" width="72" height="18" uuid="5449966a-4209-4fa6-b16d-ae62d9d23bca"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="218" y="31" width="70" height="7" uuid="eaa1282a-6d52-4af2-9f67-2784d88eeea2"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[AUTHORIZED CAPACITY]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="216" y="38" width="72" height="7" uuid="817a85d6-ca2b-4713-b754-e0a29cc55d11"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{no_of_pass}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="288" y="29" width="72" height="18" uuid="7b7cc415-3212-44d1-9bd0-82d083d4aeb5"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="290" y="31" width="70" height="7" uuid="12b77402-53c3-4d1c-b854-85f92ccfcbf5"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[UNLADEN WEIGHT]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="288" y="38" width="59" height="7" uuid="68cdc402-010b-4363-8dbd-ce7c55ff2bc2"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{unladen_weight}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="347" y="38" width="12" height="7" uuid="7bc953d6-ee41-4176-8b61-b1be881da3b4"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Kgs.]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="0" y="129" width="360" height="88" uuid="5aab0769-9053-4133-9d70-2998dcfe2c31"/>
+				<rectangle>
+					<reportElement x="0" y="0" width="111" height="50" uuid="225636e1-f029-4a45-8990-f3716a886b5e"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="0" width="111" height="8" uuid="68ecb501-93f9-41c1-a980-583d6f36e713"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[SECTION I/II]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="111" height="50" uuid="0e793777-17cd-407a-8ccc-6f4eccd63726"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[THIRD PARTY LIABILITY]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="111" y="0" width="12" height="50" uuid="32c8cd30-cbad-49f1-b075-d58be2a09585"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="111" y="0" width="12" height="50" uuid="68067e5b-c340-432e-b834-556008ce0fbe"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+						<font fontName="SansSerif" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+						<paragraph lineSpacing="Fixed" lineSpacingSize="5.3"/>
+					</textElement>
+					<text><![CDATA[A
+M
+O
+U
+N
+T
+S]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="123" y="0" width="237" height="25" uuid="1435ba4d-6144-4def-ab17-080cd1bfc901"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="131" y="0" width="66" height="25" uuid="0e241fdc-7ef6-43cd-8649-245ec8af5d2b"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[LIMIT OF LIABILITY]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="197" y="0" width="19" height="25" uuid="3252776f-7343-49aa-a59d-ed178fb0fe2b"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PHP]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="216" y="0" width="134" height="25" uuid="166ca51d-8f96-4bab-b841-c03f159cdbc2"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sum_insured}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="123" y="25" width="237" height="25" uuid="8849cff2-ae44-47e4-b6d6-f311c229dbe5"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="131" y="25" width="66" height="25" uuid="2b8d789f-3d30-4399-8658-c05aab43eac0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[PREMIUM PAID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="197" y="25" width="19" height="25" uuid="76f9376a-e9bc-4c41-bed8-0c0ae667cdae"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PHP]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+					<reportElement x="216" y="25" width="134" height="25" uuid="12f380b8-dc36-42b5-b9d3-55adbc994e07"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{premium}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement x="0" y="50" width="360" height="38" uuid="f24f1d4f-07fd-41cb-b8a1-f2565d8c7b24"/>
+					<graphicElement>
+						<pen lineWidth="0.75"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="7" y="53" width="197" height="7" uuid="630fa140-39dd-47ac-a40a-b1a68af64e7c"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[* SUBJECT TO THE SCHEDULE OF INDEMNITIES SHOWN AT THE BACK HEREOF]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="23" y="60" width="181" height="20" uuid="a4176496-22e0-4ef6-b5ab-a5bfc86dd756"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[This Confirmation of Cover is evidence of the policy of insurance required under Chapter VI - "Compulsory Motor Vehicle Liability Insurance." of the Insurance Code, as amended by President Decree No. 1814.]]></text>
+				</staticText>
+				<image>
+					<reportElement x="280" y="45" width="63" height="22" uuid="b6cc6fab-1445-49e5-a23a-bbbbeca6cc84"/>
+					<imageExpression><![CDATA["https://s3-ap-southeast-1.amazonaws.com/cpi.eproducts.reports/cpi/ctpl/images/E-Signature.png"]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="238" y="59" width="117" height="7" uuid="b486632e-cda3-44a6-9c6f-9ce56fa575e5"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{signatory_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="238" y="66" width="117" height="7" uuid="b96d9e07-0584-48ef-9e53-b758e36ad63e"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{signatory_des}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="238" y="73" width="117" height="1" uuid="3c6eaf56-bdb0-4a90-be80-a91bed5dcdbd"/>
+				</line>
+				<staticText>
+					<reportElement x="238" y="75" width="117" height="13" uuid="ab0a8cf4-9846-4d84-a462-0aeb5043330b"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="5" isBold="false"/>
+						<paragraph lineSpacing="Fixed" lineSpacingSize="5.0"/>
+					</textElement>
+					<text><![CDATA[Authorized Signature
+"This document is not valid for claiming input tax"]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

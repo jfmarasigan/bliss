@@ -1,0 +1,39 @@
+.navbar {
+    background: transparent;
+    transition: .5s all;
+}
+
+#banner {
+    background: url(../../images/banner.jpg) no-repeat center fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+}
+
+#banner-logo {
+    margin-top: 188px;
+}
+
+#banner-logo img {
+    width: 180px;
+    height: 80px;
+}
+
+#banner-text {
+    color: #FFF;
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-transform: lowercase;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+@media (max-width: 376px) {
+    #banner-logo img {
+        width: 130px;
+        height: 60px;
+    }
+    #banner-text {
+        font-size: 50px;
+    }
+}

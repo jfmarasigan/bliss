@@ -1,0 +1,114 @@
+.title {
+    color: #2685CC;
+}
+
+.apply-btn:hover {
+    color: #333 !important;
+}
+
+.title, .process-steps-box i, footer p a, #btnApply:hover, #btnExit:hover {
+    color: #349EC4;
+}
+
+.header-ch {
+    color: #5B9BD5;
+}
+
+.message button {
+    color: #5DB1D0;
+}
+
+.title-shadow {
+    color: #F0F0F0;
+}
+
+.banner-text, .form-steps h3, .steps-logo, #btnApply, footer, footer p a:hover, #goToTop, #contact h3, .form input, .form textarea, .form input::placeholder, .form textarea::placeholder, .message button:hover, .address p, .success, .error {
+    color: #FFF;
+}
+
+.nav li a {
+    color: #FFF !important;
+}
+
+.form-steps, .steps-logo, #process-box, #btnExit:hover {
+    background: #146681;
+}
+
+.navbar, .navbar.scroll, #btnApply, footer, .message button:hover, .divider {
+    background: #333;
+}
+
+.preloader-inner .single-loader, .nav li a::before, .apply-btn, #goToTop, #contact, .address i, #btnExit {
+    background: #349EC4;
+}
+
+.success {
+    background: #4CAF50;
+}
+
+.steps-box, .steps-box:not(.disabled):hover .steps-logo, .steps-box.active .steps-logo {
+    background: #5B9BD5;
+}
+
+.form input, .form textarea {
+    background: #5DB1D0;
+}
+
+.error {
+    background: #AF4C4C;
+}
+
+.form-steps p, #note {
+    background: #D5DBDB;
+}
+
+#ctplInsurance, .faq-desc {
+    background: #D9D9D9;
+}
+
+.header-desc::before {
+    background: #FF0000;
+}
+
+#form .container, .process-steps-box, .service-box, #process-box>div:first-child {
+    background: #FFF;
+}
+
+.apply-btn:hover {
+    background: #FFF !important;
+}
+
+.steps-box.disabled::before {
+    background: rgba(0, 0, 0, 0.562);
+}
+
+.content-header::before {
+    background: rgba(51, 51, 51, 0.26);
+}
+
+#process, #service, #indemnities {
+    background: rgba(165, 165, 165, 0.151);
+}
+
+@media (max-width: 520px) {
+    .header-apply {
+        color: rgba(255, 255, 255, 0.61);
+        background: rgba(128, 128, 128, 0.342);
+    }
+    .header-apply:hover {
+        color: rgba(255, 255, 255, 0.61);
+        background: rgba(52, 158, 196, 0.37);
+    }
+}
+
+@media (max-width: 456px) {
+    option:disabled {
+        background: rgba(255, 0, 0, 0.479);
+    }
+}
+
+@media (max-width: 430px) {
+    .title-desc {
+        background: rgba(91, 154, 213, 0.445);
+    }
+}

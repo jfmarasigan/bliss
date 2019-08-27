@@ -24,7 +24,7 @@ functions:
     description: "[CTPL] returns base 64 encoded string to be used for POST redirect in paynamics"
     events:
       - http:
-          path: create-payement-request
+          path: create-payment-request
           method: get
           integration: lambda-proxy
           cors: true

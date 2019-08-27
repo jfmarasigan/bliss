@@ -1,6 +1,16 @@
 version: 0.2
 
-# buildspec for initial resources (buckets, etc...)
+# buildspec for initial resources
+# - [s3 bucket] stack repository
+# - [SSM] constant parameters
+
+# environment variable/s used (code build environment variables)
+# STACK_BUCKET - name of s3 bucket used as cloudformation stack repo
+# CompanyNameParam - Full/abbreviated name of company using this E-Products instance
+# DatabaseHostParam - host of database for this E-Products instance
+# DatabasePortParam - port of database for this E-Products instance
+# DatabaseNameCTPLParam - name of database schema for CTPL application
+# DatabaseNameTravelParam - name of database schema for Travel application
 
 phases:
   install:
@@ -16,10 +26,13 @@ phases:
       - echo Deployment started on `date`
       # create stack repository
       - aws s3 mb s3://$STACK_BUCKET
+      # create reports bucket
+      - aws s3 mb s3://$REPORT_BUCKET
+      # create SSM parameters
       # [A] deploy lambda function that sets origin response for AWS CloudFront distributions
       # create cloudfront deployment
       # use env variables in code build to set domain
       # set origin response trigger using ARN of lambda function (see [A])
   post_build:
     commands:
-      - echo Deployment done.
+      - echo Deployment done on `date`.

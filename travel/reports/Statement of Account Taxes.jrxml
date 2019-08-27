@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Statement of Account Taxes" language="groovy" pageWidth="135" pageHeight="842" columnWidth="135" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="aeebcb87-7dd8-4a82-b719-954aa6ae3879">
+	<property name="ireport.zoom" value="6.11590904484147"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_POLICY_ID" class="java.lang.Integer"/>
+	<parameter name="P_TOTAL_AMT" class="java.lang.Double"/>
+	<queryString>
+		<![CDATA[SELECT a.tax_desc,
+       CASE WHEN a.tax_type = 'R' THEN (b.prem_amt * a.tax_rate) / 100
+	  ELSE a.tax_amount
+       END tax_amount
+  FROM EPIM_TAXES a, EPIT_TRAVEL_POLBASIC b
+ WHERE b.policy_id = $P{P_POLICY_ID}]]>
+	</queryString>
+	<field name="tax_desc" class="java.lang.String">
+		<fieldDescription><![CDATA[Corresponds to the Tax Description.]]></fieldDescription>
+	</field>
+	<field name="tax_amount" class="java.lang.Double">
+		<fieldDescription><![CDATA[Tax amount applied for tax records of fixed amount type. This amount is in local currency and can only be populated if tax type is Fixed Amount.]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="8" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="105" height="8" uuid="b5b26866-78a9-4a43-9111-589ada51195c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tax_desc}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
+				<reportElement x="105" y="0" width="30" height="8" uuid="b3df5c71-30cd-42f3-8bf3-fa7fe1cd772d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tax_amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="27">
+			<line>
+				<reportElement x="90" y="6" width="45" height="1" uuid="41eecc61-d763-441b-9de7-1e9ef5596963"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="8" width="90" height="8" uuid="abd5acd7-8ecb-43c5-94a8-3191ad0aea04"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[AMOUNT DUE =>]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="8" width="15" height="8" uuid="d903e1be-e40a-4db5-b970-e50f89a303c9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[PHP]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="105" y="8" width="30" height="8" uuid="f6a743c9-757c-4ed1-8961-0d2221f62d25"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("#,##0.00").format(Double.valueOf($P{P_TOTAL_AMT}))]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="90" y="17" width="45" height="1" uuid="e287d112-df27-4af7-8e9d-e4e4e5c898c8"/>
+			</line>
+			<line>
+				<reportElement x="90" y="19" width="45" height="1" uuid="31f528b8-0792-43b1-9509-28a48012204d"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

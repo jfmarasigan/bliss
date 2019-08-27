@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Statement of Account" language="groovy" pageWidth="396" pageHeight="430" whenNoDataType="AllSectionsNoDetail" columnWidth="360" leftMargin="18" rightMargin="18" topMargin="18" bottomMargin="18" uuid="3a2fcc1c-6aa1-49c1-acc1-dd1b4bb31dee">
+	<property name="ireport.zoom" value="4.715895382000177"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="906"/>
+	<parameter name="P_POLICY_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[CALL get_soa_report_dtls($P{P_POLICY_ID});]]>
+	</queryString>
+	<field name="company_name" class="java.lang.String"/>
+	<field name="company_addr" class="java.lang.String"/>
+	<field name="contact_dtls" class="java.lang.String"/>
+	<field name="company_tin" class="java.lang.String"/>
+	<field name="emp_no" class="java.lang.String">
+		<fieldDescription><![CDATA[Identification number used to uniquely identify the travel agent.]]></fieldDescription>
+	</field>
+	<field name="bill_no" class="java.lang.String">
+		<fieldDescription><![CDATA[Bill number processed in the system (GENIISYS/Local System).]]></fieldDescription>
+	</field>
+	<field name="pol_stat" class="java.lang.String"/>
+	<field name="intm_no" class="java.lang.String">
+		<fieldDescription><![CDATA[Intermediary for the specific travel agency.]]></fieldDescription>
+	</field>
+	<field name="intm_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="issue_date" class="java.lang.String">
+		<fieldDescription><![CDATA[Travel PA issue date using the format ‘YYYY-MM-DD’.]]></fieldDescription>
+	</field>
+	<field name="incept_date" class="java.lang.String"/>
+	<field name="expiry_date" class="java.lang.String">
+		<fieldDescription><![CDATA[Travel PA expiry date using the format ‘YYYY-MM-DD’.]]></fieldDescription>
+	</field>
+	<field name="assd_name" class="java.lang.String"/>
+	<field name="assd_addr" class="java.lang.String"/>
+	<field name="line_name" class="java.lang.String">
+		<fieldDescription><![CDATA[Defined name for each line of business.]]></fieldDescription>
+	</field>
+	<field name="policy_no" class="java.lang.String">
+		<fieldDescription><![CDATA[Unique identification of the transaction (syntax includes: line, subline, branch, year and sequence).]]></fieldDescription>
+	</field>
+	<field name="item_desc" class="java.lang.String"/>
+	<field name="premium" class="java.lang.Double"/>
+	<field name="tot_amt" class="java.lang.Double"/>
+	<field name="signatory_name" class="java.lang.String"/>
+	<field name="signatory_des" class="java.lang.String"/>
+	<field name="underwriter" class="java.lang.String"/>
+	<field name="print_date" class="java.lang.String"/>
+	<title>
+		<band height="42" splitType="Stretch">
+			<image vAlign="Middle">
+				<reportElement x="59" y="0" width="159" height="38" uuid="2dc0036d-311e-4ccc-a904-5bf1c22336b3"/>
+				<imageExpression><![CDATA["https://s3-ap-southeast-1.amazonaws.com/cpi.eproducts.reports/cpi/travel/images/cpiinsurtechlogo.png"]]></imageExpression>
+			</image>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="97" y="0" width="204" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="46d5bfb1-6b14-455d-b260-5308c9707746"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="11" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica-Bold" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{company_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="97" y="14" width="204" height="7" forecolor="#000000" backcolor="#FFFFFF" uuid="7a792470-b467-4814-8fe2-492674aec0df"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="5" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{company_addr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="97" y="21" width="204" height="7" forecolor="#000000" backcolor="#FFFFFF" uuid="4401b138-08cb-433d-860b-d2a5c350d652"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="5" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contact_dtls}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="97" y="28" width="204" height="7" forecolor="#000000" backcolor="#FFFFFF" uuid="a969cc90-5c8b-443b-9d92-e70d067a6f39"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="5" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA['VAT REG TIN ' + $F{company_tin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="257">
+			<staticText>
+				<reportElement x="0" y="0" width="360" height="11" uuid="f8b8fe9a-2181-4847-9c13-b2bc61298018"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[STATEMENT OF ACCOUNT]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="282" y="0" width="78" height="8" uuid="832a9a24-357e-416b-b074-805c1aab66d9"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pol_stat}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="265" y="12" width="95" height="8" uuid="c5b7f4ee-51e2-40c5-869f-dc3f02a00110"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{intm_no} + " / " + $F{intm_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="36" width="61" height="8" uuid="72dc4045-8a19-40ef-bcea-4a25b4cc3d06"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Broker Reference No : ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="61" y="36" width="127" height="8" uuid="52a64542-0f36-4e34-9826-74981775cc97"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emp_no}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="203" y="33" width="157" height="14" uuid="44fe74fe-c307-4859-9ef2-66b83c8d6f92"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="246" y="36" width="38" height="8" uuid="e9142dfb-95ec-4b3f-84ea-dfba2b99b8e0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[ISSUE DATE]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="284" y="36" width="67" height="8" uuid="56c3e6ab-e605-47e7-853d-0a565075e318"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{issue_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="62" width="25" height="8" uuid="f5eb1f09-2e6a-4547-ae4c-5f87f3dc0069"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Bill No.]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="25" y="62" width="163" height="8" uuid="742dad02-5d6b-452f-b4b3-27b76eb28b14"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bill_no}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="203" y="47" width="157" height="26" uuid="288ec118-6560-43ab-a81d-de9111aa5293"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="246" y="50" width="38" height="8" uuid="30a4bdbe-054c-4283-b240-a228c4bfd92b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[FROM]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="284" y="50" width="67" height="8" uuid="1781899e-d5c2-463f-a420-e2502dda09e0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incept_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="246" y="62" width="38" height="8" uuid="66bbd92f-1020-4f06-9569-4b34e1db95d0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[TO]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="284" y="62" width="67" height="8" uuid="acfa93fd-0a93-447c-9a80-3fefc40597ba"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expiry_date}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="73" width="203" height="63" uuid="de9d8f7c-d36f-4b3b-b093-f204dee7f5de"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="6" y="78" width="182" height="8" uuid="ecc27138-32e3-48fe-beef-eed3a70d7be8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Name and address of insured]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="23" y="89" width="165" height="8" uuid="c02524e5-6e35-4841-a789-f99fcb0b12e8"/>
+				<textElement>
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{assd_name}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="23" y="105" width="165" height="8" uuid="c3404181-8796-4fbf-926d-8eb7067de1de"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{assd_addr}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="203" y="73" width="157" height="63" uuid="10ba8c55-648a-4a8b-9046-b92063115a9b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="246" y="78" width="32" height="8" uuid="7a64284e-26cd-4d75-8453-507c7b6334cf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Line]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="278" y="78" width="73" height="8" uuid="42483a6b-ae34-4456-965f-cefd6b154e8f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{line_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="246" y="89" width="105" height="8" uuid="49835213-0973-4577-984d-8082aa5a9997"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Policy No]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="246" y="100" width="105" height="8" uuid="0fc255c3-0aea-48d5-a930-3ac913c56a27"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{policy_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="137" width="77" height="8" uuid="c9797682-e030-4c27-8989-482b25c82b73"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Remarks: Travel PA Policy]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="163" width="360" height="25" uuid="c79f8a67-a188-4aa0-9226-fdd82149a273"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="164" width="52" height="8" uuid="5d8c0fc5-2734-4c4a-94ac-efcfad7deaad"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Particulars :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="174" width="65" height="8" uuid="690448fb-3ab3-4e2b-b382-1aeb78a6e2bf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[ITEM DESCRIPTION :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="81" y="174" width="279" height="8" uuid="81fb0e6f-9eb5-4057-80bb-59f8cb41f773"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item_desc}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="188" width="360" height="10" uuid="1a46e1ab-6028-4add-b5c7-ff4ddda1caaa"/>
+				<subreportParameter name="P_PREMIUM_AMT">
+					<subreportParameterExpression><![CDATA[$F{premium}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_TOTAL_DUE">
+					<subreportParameterExpression><![CDATA[$F{tot_amt}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_POLICY_ID">
+					<subreportParameterExpression><![CDATA[$P{P_POLICY_ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["https://s3-ap-southeast-1.amazonaws.com/cpi.eproducts.reports/cpi/travel/SOA+Peril+And+Taxes.jasper"]]></subreportExpression>
+			</subreport>
+			<frame>
+				<reportElement positionType="Float" x="0" y="198" width="360" height="59" uuid="04709525-1017-4b6e-92ad-b59addd93a2c"/>
+				<rectangle>
+					<reportElement x="0" y="0" width="203" height="49" uuid="130ce3ab-a766-4b9e-bb03-b738069c8892"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="5" y="0" width="52" height="8" uuid="7cb58a3a-5053-4bb5-baf5-eea316e31088"/>
+					<textElement verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[Received by:]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="0" y="22" width="203" height="28" uuid="2780e033-cff6-4b55-bc93-25d2ccd46c50"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="5" y="24" width="198" height="23" uuid="370031c7-6f41-4f92-b773-8079b5164e53"/>
+					<textElement verticalAlignment="Top">
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[This statement of account must not be considered as a receipt. An official receipt will be issued to you upon payment of this account. If payment is made to our office, please demand of OFFICIAL RECEIPT.]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="203" y="0" width="157" height="50" uuid="4ab45855-180b-49a5-a6b0-d61488438965"/>
+				</rectangle>
+				<image>
+					<reportElement x="260" y="4" width="54" height="33" uuid="eda57c50-8b8d-4413-a8fd-3be0e1e0fd58"/>
+					<imageExpression><![CDATA["https://s3-ap-southeast-1.amazonaws.com/cpi.eproducts.reports/cpi/travel/images/E-Signature.png"]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="217" y="30" width="130" height="8" uuid="a8209b67-0876-4d2f-a10f-64781d54cc05"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{signatory_name}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="217" y="38" width="130" height="1" uuid="06da6c76-e6c3-4613-bd86-bab5b6c758aa"/>
+				</line>
+				<textField isBlankWhenNull="true">
+					<reportElement x="217" y="39" width="130" height="8" uuid="60225afb-4625-4bd3-bfcc-d9394475bc96"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{signatory_des}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="5" y="51" width="198" height="8" uuid="3944daf5-9d99-465a-82ca-5995a4ac9184"/>
+					<textElement verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{underwriter} + " / " + $F{print_date}.toUpperCase()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="203" y="51" width="157" height="8" uuid="4d3e41bd-0585-46bb-921b-aaf4729aa895"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA["This document is not valid for claiming input tax"]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

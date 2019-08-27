@@ -1,0 +1,402 @@
+#form {
+    background: linear-gradient(to bottom, rgba(13, 35, 59, 0.479), rgba(16, 48, 72, 0.479), rgba(19, 61, 85, 0.479)), url(../../images/form-bg.jpg) no-repeat center center;
+    background-size: cover;
+    padding: 120px 0 50px;
+    min-height: 95vh;
+}
+
+#form .container {
+    padding: 0;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.fieldset {
+    border: 1px #CCC solid;
+    padding: 20px 20px 5px;
+    position: relative;
+    width: 95%;
+}
+
+.fieldset-title {
+    position: absolute;
+    top: -12px;
+    background: #fff;
+    padding: 0 12px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.form-steps {
+    width: 300px;
+    border-right: #333 2px solid;
+}
+
+.form-steps h3 {
+    text-align: center;
+    margin: 20px;
+}
+
+.form-steps p {
+    margin: 0 20px;
+    width: 260px;
+    padding: 10px;
+}
+
+.steps {
+    padding: 60px 20px 70px;
+}
+
+.steps-mobile {
+    display: none;
+}
+
+.steps-box {
+    margin-bottom: 25px;
+    height: 45px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    position: relative;
+    transition: 0.5s all;
+}
+
+.steps-box.disabled::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    cursor: not-allowed;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.steps-box:not(.disabled):hover, .steps-box.active {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    width: 95%;
+}
+
+.steps-box label {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(0, -50%);
+    letter-spacing: 1px;
+}
+
+.steps-logo {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: #5B9BD5 3px solid;
+    transition: .5s all;
+}
+
+.steps-box:not(.disabled):hover .steps-logo, .steps-box.active .steps-logo {
+    right: 0;
+    border: #146681 3px solid;
+}
+
+.steps-logo i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.steps-box:last-child {
+    margin-bottom: 0;
+}
+
+.form-content {
+    margin: 20px 40px 40px;
+    position: relative;
+    width: 100%;
+}
+
+.content-header {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 7px;
+    position: relative;
+}
+
+.content-header::before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 50%;
+    bottom: -15px;
+    left: 0;
+}
+
+.content {
+    margin-top: 52px;
+}
+
+.content h4 {
+    font-weight: bold;
+}
+
+.form-fields {
+    margin-bottom: 20px;
+}
+
+.inline {
+    display: flex;
+}
+
+.inline div {
+    width: 50%;
+}
+
+.name div {
+    width: 259px;
+}
+
+.form-fields select, .form-fields input[type="text"] {
+    width: 45%;
+}
+
+.inline div select, .inline div input[type="text"] {
+    width: 90%;
+}
+
+.inline div .date {
+    width: 99%;
+}
+
+.date .input-group-addon {
+    width: 10%;
+}
+
+#policyDetailsContent .content .form-fields:last-child {
+    margin-top: 50px;
+}
+
+.amount {
+    font-size: 20px;
+}
+
+#txtIndividualZipCode, #txtCwoaZipCode, #txtCwaZipCode {
+    width: 85%;
+}
+
+#summaryDetailsContent .content {
+    margin-bottom: 50px;
+}
+
+.bill-content {
+    padding-bottom: 20px;
+}
+
+.content-button {
+    position: absolute;
+    margin-top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.content-button button {
+    padding: 8px 100px;
+}
+
+table th {
+    width: 160px;
+}
+
+table td {
+    width: 240px;
+    max-width: 240px;
+    overflow-x: auto;
+}
+
+.amount-table {
+    margin-left: 50%;
+    width: 50%;
+}
+
+.amount-table td {
+    text-align: right;
+}
+
+/* =========================================== MEDIA QUERIES */
+
+@media (max-width: 1199px) {
+    .form-steps {
+        width: 250px;
+    }
+    .form-steps p {
+        width: 210px;
+    }
+    .form-content {
+        width: 66%;
+    }
+    .name div {
+        width: 210px;
+    }
+    table td {
+        width: 175px;
+    }
+}
+
+@media (max-width: 991px) {
+    #form .container {
+        display: block;
+    }
+    .form-steps {
+        border-right: none;
+        border-bottom: #333 2px solid;
+        padding-top: 20px;
+        width: 100%;
+    }
+    .form-steps h3 {
+        margin-top: 0;
+    }
+    .form-steps p {
+        position: absolute;
+        margin-left: 0;
+        top: 280px;
+    }
+    .steps {
+        display: flex;
+        padding: 10px 20px 30px;
+    }
+    .steps-box {
+        margin-right: 40px;
+    }
+    .steps-box:last-child {
+        margin-right: 0;
+    }
+    .steps-box:not(.disabled):hover, .steps-box.active {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .steps-box label {
+        display: none;
+    }
+    .steps-logo {
+        right: 50%;
+        top: 50%;
+    }
+    .steps-box:not(.disabled):hover .steps-logo, .steps-box.active .steps-logo {
+        right: 50%;
+        top: 100%;
+    }
+    .form-content {
+        width: 90%;
+        margin-top: 50px;
+    }
+    .content-header {
+        font-size: 20px;
+        text-align: center;
+    }
+    .content-header::before {
+        width: 20%;
+        left: 39%;
+    }
+    .name div {
+        width: 222px;
+    }
+    #policyDetailsContent .content .form-fields:last-child {
+        margin-top: 30px;
+    }
+    .bill-content {
+        padding-bottom: 0;
+    }
+    .content-button {
+        position: relative;
+        margin-top: 40px;
+        text-align: center;
+    }
+    #summaryDetailsContent .content {
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        padding-bottom: 10px;
+    }
+    #form .container {
+        margin: 0 10px;
+    }
+    .inline.name {
+        display: block;
+    }
+    .name div {
+        width: 106%;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 700px) {
+    .form-content {
+        margin: 50px 5% 40px;
+    }
+    .table-div {
+        overflow-x: auto;
+    }
+    .amount-table {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 598px) {
+    .fieldset {
+        width: 100%;
+    }
+    .form-steps p {
+        top: 305px;
+    }
+    .inline {
+        display: block;
+    }
+    .inline div {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .form-fields select, .form-fields input[type="text"] {
+        width: 100%;
+    }
+    .inline div select, .inline div input[type="text"] {
+        width: 100%;
+    }
+    .inline div .date {
+        width: 100%;
+    }
+    #txtIndividualZipCode, #txtCwoaZipCode, #txtCwaZipCode {
+        width: 100%;
+    }
+    .content-button button {
+        padding: 8px 20%;
+    }
+}
+
+@media (max-width: 456px) {
+    .steps {
+        display: none;
+    }
+    .steps-mobile {
+        display: block;
+        text-align: center;
+        margin: 50px 0;
+    }
+    #selMobile {
+        display: inline-block;
+        width: 75%;
+    }
+}
+
+@media (max-width: 344px) {
+    .form-steps p {
+        top: 335px;
+    }
+}

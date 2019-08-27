@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SOA Peril And Taxes" language="groovy" pageWidth="360" pageHeight="200" whenNoDataType="AllSectionsNoDetail" columnWidth="360" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="97f605de-d60a-4a8e-8c1b-edfe5353c9d1">
+	<property name="ireport.zoom" value="4.594972986357239"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_POLICY_ID" class="java.lang.Integer"/>
+	<parameter name="P_PREMIUM_AMT" class="java.lang.String"/>
+	<parameter name="P_TOTAL_DUE" class="java.lang.Double"/>
+	<summary>
+		<band height="44">
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="360" height="44" uuid="8401cdbc-c25c-463a-b187-0ccff2cb9761"/>
+			</rectangle>
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="203" height="44" uuid="81597de3-da38-4729-8fac-d278635c30a5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="11" y="12" width="52" height="8" uuid="d4a13624-450a-4c0a-8911-677294515381"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Coverage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="90" y="12" width="46" height="8" uuid="79cb1555-9d23-4caf-986f-9c470d27ef90"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Amount Insured]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="12" width="36" height="8" uuid="12df3f33-34b4-44da-b401-cf3135fb905a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Premium]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="11" y="24" width="125" height="8" uuid="d4df5f83-10a5-4830-8b8e-1b8c3f355e62"/>
+				<subreportParameter name="P_POLICY_ID">
+					<subreportParameterExpression><![CDATA[$P{P_POLICY_ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["https://s3-ap-southeast-1.amazonaws.com/cpi.eproducts.reports/cpi/travel/Statement+of+Account+Perils.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="140" y="24" width="15" height="8" uuid="92707ce5-08b5-439c-b3ab-c8ac0981863c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[PHP]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="155" y="24" width="36" height="8" uuid="8fdf357d-f7e9-4782-89ba-1fa3a0dc16c3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("#,##0.00").format(Double.valueOf($P{P_PREMIUM_AMT}))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="214" y="12" width="90" height="8" uuid="b3e61586-12c4-4832-868f-baa9d0c7e58f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[TOTAL PREMIUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="12" width="15" height="9" uuid="adae0e27-827f-4686-892e-d4eb12a14e89"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[PHP]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="319" y="12" width="30" height="8" uuid="a88e0d0c-05a7-459e-a7d4-a7ff54f0245c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.DecimalFormat("#,##0.00").format(Double.valueOf($P{P_PREMIUM_AMT}))]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="214" y="20" width="135" height="12" uuid="09cce701-aaca-44a2-ae52-3911f80fb43e"/>
+				<subreportParameter name="P_POLICY_ID">
+					<subreportParameterExpression><![CDATA[$P{P_POLICY_ID}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="P_TOTAL_AMT">
+					<subreportParameterExpression><![CDATA[$P{P_TOTAL_DUE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["https://s3-ap-southeast-1.amazonaws.com/cpi.eproducts.reports/cpi/travel/Statement+of+Account+Taxes.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

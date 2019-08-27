@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Policy Perils" language="groovy" pageWidth="344" pageHeight="200" whenNoDataType="AllSectionsNoDetail" columnWidth="344" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="aeebcb87-7dd8-4a82-b719-954aa6ae3879">
+	<property name="ireport.zoom" value="6.600000000000033"/>
+	<property name="ireport.x" value="1245"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="P_POLICY_ID" class="java.lang.Integer"/>
+	<parameter name="P_CURRENCY_SIGN" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT c.peril_name, b.tsi_amt,
+       CASE WHEN b.prem_sw = 'Y' THEN a.prem_amt
+	  ELSE 0
+       END premium
+  FROM EPIT_TRAVEL_POLBASIC a,
+       EPIM_PLAN_PERIL b,
+       EPIM_PERIL c
+ WHERE a.policy_id = $P{P_POLICY_ID}
+   AND a.plan_cd = b.plan_cd
+   AND a.line_cd = c.line_cd
+   AND b.peril_cd = c.peril_cd]]>
+	</queryString>
+	<field name="peril_name" class="java.lang.String">
+		<fieldDescription><![CDATA[Defined subline name for each product.]]></fieldDescription>
+	</field>
+	<field name="tsi_amt" class="java.lang.Double">
+		<fieldDescription><![CDATA[Total sum insured amount of the peril.]]></fieldDescription>
+	</field>
+	<field name="premium" class="java.lang.Double"/>
+	<pageHeader>
+		<band height="15">
+			<frame>
+				<reportElement x="0" y="0" width="311" height="12" uuid="db97ed94-303f-4231-a854-3e513c5263df"/>
+				<staticText>
+					<reportElement x="0" y="0" width="115" height="10" uuid="b4750518-2c2f-487b-88e2-4b6b8d84a20d"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="7" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Peril/s]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="11" width="115" height="1" uuid="7b22d269-7ef4-438f-9d14-9b0d3774ad6c"/>
+					<graphicElement>
+						<pen lineWidth="0.25" lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="125" y="0" width="92" height="10" uuid="942439bb-9bfb-4f16-ad8e-1b338307f5a9"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="7" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Sum Insured]]></text>
+				</staticText>
+				<line>
+					<reportElement x="125" y="11" width="92" height="1" uuid="aa6d0398-419b-4d55-ab19-995af4e9df81"/>
+					<graphicElement>
+						<pen lineWidth="0.25" lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="227" y="0" width="84" height="10" uuid="00adfd54-4036-424c-a734-32da81f60f26"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="SansSerif" size="7" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Premium]]></text>
+				</staticText>
+				<line>
+					<reportElement x="227" y="11" width="84" height="1" uuid="13f3780c-534c-454a-a88b-29dc06c6a679"/>
+					<graphicElement>
+						<pen lineWidth="0.25" lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+			</frame>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="10" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="115" height="10" uuid="d621cedc-b962-4047-bc15-3918b416c7b8"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peril_name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="125" y="0" width="18" height="10" uuid="9c8c1fe2-871d-442d-9665-094c0e978c9c"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_CURRENCY_SIGN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="143" y="0" width="74" height="10" uuid="b75f1173-3ef3-48f0-8887-117b31bff6e3"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tsi_amt}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="227" y="0" width="18" height="10" uuid="cddba91e-dba4-4fff-9ea8-c12822b1e61f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{P_CURRENCY_SIGN}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+				<reportElement x="245" y="0" width="66" height="10" uuid="51b48193-9ca6-4925-ace1-a6127026ad11"/>
+				<textElement textAlignment="Right">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{premium}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -3,16 +3,10 @@ version: 2.0
 # buildspec for initial resources (buckets, etc...)
 
 phases:
-  # install:
-  # runtime_versions:
-  #   nodejs: 8
+  install:
 
-  # commands:
-  #   - echo Installing serverless framework...
-  #   - npm i -g serverless
-  # pre_build:
-  #   commands:
-  #     -
+  pre_build:
+
   build:
     commands:
       - echo Deployment started on `date`

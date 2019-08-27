@@ -15,7 +15,7 @@ provider:
 package:
   individually: true
   exclude:
-    - ./**
+    - "./**"
 
 functions:
   create-ctpl-payment-request:

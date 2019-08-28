@@ -1,0 +1,4 @@
+initial-resources-buildspec.yml
+layers-buildspec.yml
+
+* e-products deploy (ctpl, travel, etc)

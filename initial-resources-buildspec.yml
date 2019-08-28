@@ -5,7 +5,12 @@ version: 0.2
 # - [SSM] constant parameters
 
 # environment variable/s used (code build environment variables)
-# STACK_NAME - name of this cloudformation stack
+# SSM_STACK_NAME
+#  - name of the SSM parameters cloudformation stack (unique within the region)
+#  - bliss-<company-name>-ssm-stack
+# IAM_STACK_NAME
+#  - name of the IAM parameters cloudformation stack (unique within the region)
+#  - bliss-<company-name>-iam-stack
 # STACK_BUCKET - name of s3 bucket used as cloudformation stack repo
 # REPORT_BUCKET - name of s3 bucket used as reports binary container
 # CompanyNameParam - Full/abbreviated name of company using this E-Products instance
@@ -29,7 +34,9 @@ phases:
       # create reports bucket
       - aws s3 mb s3://$REPORT_BUCKET
       # create SSM parameters
-      - aws cloudformation deploy --template-file parameter.store.yaml --stack-name $STACK_NAME --parameter-overrides CompanyNameParam=$CompanyNameParam DatabaseHostParam=$DatabaseHostParam DatabasePortParam=$DatabasePortParam
+      - aws cloudformation deploy --template-file parameter-store.yaml --stack-name $SSM_STACK_NAME --parameter-overrides CompanyNameParam=$CompanyNameParam DatabaseHostParam=$DatabaseHostParam DatabasePortParam=$DatabasePortParam
+      # create IAM policies and roles for lambda functions
+      - aws cloudformation deploy --template-file iam-roles.yaml --stack-name $IAM_STACK_NAME
       # [A] deploy lambda function that sets origin response for AWS CloudFront distributions
       # create cloudfront deployment
       # use env variables in code build to set domain

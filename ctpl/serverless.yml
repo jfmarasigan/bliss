@@ -11,6 +11,10 @@ provider:
   apiName: CTPL
   deploymentBucket:
     name: ${env:STACK_BUCKET}
+  environment:
+    APPLICATION: ctpl
+    ALLOWED_ORIGIN: ${env:CTPL_ORIGIN}
+    COMPANY_NAME: ${env:COMPANY_NAME}
 
 package:
   individually: true
@@ -45,3 +49,20 @@ functions:
         - create-ctpl-payment-request/**
     layers:
       - ${cf:${env:COMPANY_NAME}-bliss-layers.EProductsUtilsARN}
+
+  get-ctpl-faq:
+    name: get-ctpl-faq
+    handler: get-ctpl-faq/index.handler
+    description: "[CTPL] retrieves the FAQ list"
+    role: ${cf:bliss-${env:COMPANY_NAME}-iam-stack.LambdaVPCAndParamStoreAccessRole}
+    events:
+      - http:
+          path: faq
+          method: get
+          integration: lambda-proxy
+          cors: true
+    package:
+      include:
+        - get-ctpl-faq/**
+    layers:
+      - ${cf:${env:COMPANY_NAME}-bliss-layers.EProductsCommonARN}

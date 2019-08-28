@@ -29,10 +29,7 @@ function createConnection(credentials) {
 }
 
 async function getConnection() {
-    const ssmCompanyParam = await ssm
-        .getParameter({ Name: "/bliss/company-name" })
-        .promise();
-    const companyName = ssmCompanyParam.Parameter.Value;
+    const companyName = process.env.COMPANY_NAME;
     const dbParamPrefix = `/bliss/${companyName}/db`;
 
     const retrievalData = {

@@ -16,11 +16,9 @@ phases:
   build:
     commands:
       - echo Deployment started on `date`
-      # put build command for layers here
       - cd layers
       - aws cloudformation package --template-file layers.yaml --output-template-file layers.cf.yaml --s3-bucket $STACK_BUCKET
       - aws cloudformation deploy --template-file layers.cf.yaml --stack-name $STACK_NAME
-      - cd ..
   post_build:
     commands:
       - echo Deployment done on `date`

@@ -1,8 +1,10 @@
 version: 0.2
 
 # environment variables
-# DOMAIN - domain to be used for the web app/s
+# STACK_BUCKET - name of s3 bucket used as cloudformation stack repo
 # COMPANY_NAME - Full/abbreviated name of company using this E-Products instance
+# REPORT_BUCKET - name of s3 bucket used for storing E-Products reports
+# BUCKET_NAME - name of s3 bucket (domain formatted) used as static website hosting for CTPL
 
 phases:
   install:
@@ -20,14 +22,14 @@ phases:
       - cd ctpl
       # create bucket for ctpl web app (name = ctpl.<domain>)
       # cloudformation template (?)
-      - aws s3
+      - aws cloudformation deploy --template-file bucket.yml --s3-bucket $STACK_BUCKET --parameter-overrides CompanyNameParam=$COMPANY_NAME BucketNameParam=$BUCKET_NAME
       # copy ctpl/web to the created bucket for ctpl web app
       - cd web
-      - aws s3 sync . s3://<>
+      - aws s3 sync . s3://$BUCKET_NAME
       - cd ..
       # copy ctpl/reports contents to <reports bucket>/ctpl for ctpl reports
       - cd reports
-      - aws s3 sync . s3://<>/ctpl
+      - aws s3 sync . s3://$REPORT_BUCKET/ctpl
       - cd ..
       # deploy serverless template for ctpl
       - serverless deploy

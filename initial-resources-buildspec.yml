@@ -16,6 +16,8 @@ version: 0.2
 # CompanyNameParam - Full/abbreviated name of company using this E-Products instance
 # DatabaseHostParam - host of database for this E-Products instance
 # DatabasePortParam - port of database for this E-Products instance
+# DATABASE_USER - username for the database for this E-Products instance
+# DATABASE_PASSWORD - password for the database for this E-Products instance
 
 phases:
   install:
@@ -30,12 +32,13 @@ phases:
     commands:
       - echo Deployment started on `date`
       # create stack repository
-      # - aws s3 mb s3://$STACK_BUCKET
-      # create reports bucket
-      # - aws s3 mb s3://$REPORT_BUCKET
       - aws cloudformation deploy --template-file common-buckets.yaml --stack-name $S3_STACK_NAME --parameter-overrides CompanyNameParam=$CompanyNameParam StackRepoBucketNameParam=$STACK_BUCKET ReportsBucketNameParam=$REPORT_BUCKET
       # create SSM parameters
       - aws cloudformation deploy --template-file parameter-store.yaml --stack-name $SSM_STACK_NAME --parameter-overrides CompanyNameParam=$CompanyNameParam DatabaseHostParam=$DatabaseHostParam DatabasePortParam=$DatabasePortParam
+      # add SSM parameter for database user
+      - aws ssm put-parameter --name /bliss/$CompanyNameParam/db/user --value $DATABASE_USER --type SecureString --tier Standard --description "MySQL database username for this E-Products instance"
+      # add SSM parameter for database password
+      - aws ssm put-parameter --name /bliss/$CompanyNameParam/db/password --value $DATABASE_PASSWORD --type SecureString --tier Standard --description "MySQL database password for this E-Products instance"
       # create IAM policies and roles for lambda functions
       - aws cloudformation deploy --template-file iam-roles.yaml --stack-name $IAM_STACK_NAME --parameter-overrides CompanyNameParam=$CompanyNameParam --capabilities CAPABILITY_NAMED_IAM
       # [A] deploy lambda function that sets origin response for AWS CloudFront distributions

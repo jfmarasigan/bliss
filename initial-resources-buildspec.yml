@@ -36,7 +36,7 @@ phases:
       # create SSM parameters
       - aws cloudformation deploy --template-file parameter-store.yaml --stack-name $SSM_STACK_NAME --parameter-overrides CompanyNameParam=$CompanyNameParam DatabaseHostParam=$DatabaseHostParam DatabasePortParam=$DatabasePortParam
       # create IAM policies and roles for lambda functions
-      - aws cloudformation deploy --template-file iam-roles.yaml --stack-name $IAM_STACK_NAME --parameter-overrides CompanyNameParam=$CompanyNameParam
+      - aws cloudformation deploy --template-file iam-roles.yaml --stack-name $IAM_STACK_NAME --parameter-overrides CompanyNameParam=$CompanyNameParam --capabilities CAPABILITY_NAMED_IAM
       # [A] deploy lambda function that sets origin response for AWS CloudFront distributions
       # create cloudfront deployment
       # use env variables in code build to set domain

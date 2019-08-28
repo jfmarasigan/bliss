@@ -65,6 +65,7 @@ Resources:
   LambdaBasicExecutionRole:
     Type: AWS::IAM::Role
     Properties:
+      RoleName: BlissLambdaBasicExecutionRole
       Path: "/"
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
@@ -81,6 +82,7 @@ Resources:
   LambdaVPCAndParamStoreAccessRole:
     Type: AWS::IAM::Role
     Properties:
+      RoleName: BlissLambdaVPCAndParamStoreAccessRole
       Path: "/"
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
@@ -99,6 +101,7 @@ Resources:
   LambdaVPCS3AndParamStoreAccessRole:
     Type: AWS::IAM::Role
     Properties:
+      RoleName: BlissLambdaVPCS3AndParamStoreAccessRole
       Path: "/"
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"

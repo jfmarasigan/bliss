@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Common buckets creation for E-Products
+
+Parameters:
+  CompanyNameParam:
+    Type: String
+    Description: Full/abbrevviated name of company using this E-Products instance
+  StackRepoBucketNameParam:
+    Type: String
+    Description: Name of bucket to be used as repository for stacks
+  ReportsBucketNameParam:
+    Type: String
+    Description: Name of bucket to be used as storage for E-Products reports
+
+Resources:
+  StackRepository:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName:
+        Ref: StackRepoBucketNameParam
+  ReportsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: Private
+      BucketName:
+        Ref: ReportsBucketNameParam
+
+Outputs:
+  StackRepository:
+    Description: Ref value for the StackRepository bucket
+    Value:
+      Ref: StackRepository
+    Export:
+      Name:
+        Fn::Sub:
+          - "${CompanyName}-stack-bucket"
+          - { CompanyName: !Ref CompanyNameParam }
+  ReportsBucket:
+    Description: Ref value for the StackRepository bucket
+    Value:
+      Ref: ReportsBucket
+    Export:
+      Name:
+        Fn::Sub:
+          - "${CompanyName}-reports-bucket"
+          - { CompanyName: !Ref CompanyNameParam }

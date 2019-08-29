@@ -41,6 +41,8 @@ phases:
       - aws ssm put-parameter --name "/bliss/${CompanyNameParam}/db/password" --value $DATABASE_PASSWORD --type "SecureString" --tier "Standard" --description "MySQL database password for this E-Products instance"
       # create IAM policies and roles for lambda functions
       - aws cloudformation deploy --template-file iam-roles.yaml --stack-name $IAM_STACK_NAME --parameter-overrides CompanyNameParam=$CompanyNameParam --capabilities CAPABILITY_NAMED_IAM
+      # create VPC here
+      - aws cloudformation deploy --template-file vpc.yaml --stack-name $VPC_STACK_NAME --parameter-overrides EnvironmentName=$VPC_STACK_NAME
       # [A] deploy lambda function that sets origin response for AWS CloudFront distributions
       # create cloudfront deployment
       # use env variables in code build to set domain

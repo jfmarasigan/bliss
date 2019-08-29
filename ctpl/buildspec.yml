@@ -25,11 +25,11 @@ phases:
       - aws cloudformation deploy --template-file bucket.yml --s3-bucket $STACK_BUCKET --parameter-overrides CompanyNameParam=$COMPANY_NAME BucketNameParam=$BUCKET_NAME
       # copy ctpl/web to the created bucket for ctpl web app
       - cd web
-      - aws s3 sync . s3://$BUCKET_NAME
+      - aws s3 sync . s3://${BUCKET_NAME}
       - cd ..
       # copy ctpl/reports contents to <reports bucket>/ctpl for ctpl reports
       - cd reports
-      - aws s3 sync . s3://$REPORT_BUCKET/ctpl
+      - aws s3 sync . s3://${REPORT_BUCKET}/ctpl
       - cd ..
       # deploy serverless template for ctpl
       - serverless deploy

@@ -5,6 +5,9 @@ Description:
   route on the public subnets. It deploys a pair of NAT Gateways (one in each AZ),
   and default routes for them in the private subnets.
 
+# Default region is "ap-southest-1" (Asia Pacific - Singapore) which as of this edit has 3 availability zones
+# Please check the number of the availability zones before running this template and modify accordingly if necessary
+
 Parameters:
   EnvironmentName:
     Description: An environment name that will be prefixed to resource names

@@ -239,6 +239,10 @@ Outputs:
     Description: A reference to the private subnet in the 2nd Availability Zone
     Value: !Ref PrivateSubnet2
 
+  PrivateSubnet3:
+    Description: A reference to the private subnet in the 3rd Availability Zone
+    Value: !Ref PrivateSubnet3
+
   NatGateway1EIPAddress:
     Description: Elastic IP allocated for Nat Gateway 1
     Value: !Ref NatGateway1EIP

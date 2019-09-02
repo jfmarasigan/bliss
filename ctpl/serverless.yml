@@ -15,6 +15,13 @@ provider:
     APPLICATION: ctpl
     ALLOWED_ORIGIN: ${env:CTPL_ORIGIN}
     COMPANY_NAME: ${env:COMPANY_NAME}
+  vpc:
+    securityGroupIds:
+      - ${cf:bliss-${env:COMPANY_NAME}-vpc.LambdaSecurityGroup}
+    subnetIds:
+      - ${cf:bliss-${env:COMPANY_NAME}-vpc.PrivateSubnet1}
+      - ${cf:bliss-${env:COMPANY_NAME}-vpc.PrivateSubnet2}
+      - ${cf:bliss-${env:COMPANY_NAME}-vpc.PrivateSubnet3}
 
 package:
   individually: true
@@ -64,5 +71,22 @@ functions:
     package:
       include:
         - get-ctpl-faq/**
+    layers:
+      - ${cf:${env:COMPANY_NAME}-bliss-layers.EProductsCommonARN}
+
+  get-policy-and-mv-type:
+    name: get-policy-and-mv-type
+    handler: get-policy-and-mv-type/index.handler
+    description: "[CTPL] retrieval of policy and MV type for policy details screen"
+    role: ${cf:bliss-${env:COMPANY_NAME}-iam-stack.LambdaVPCAndParamStoreAccessRole}
+    events:
+      - http:
+          path: policy-details/get-policy-and-mv-type
+          method: get
+          integration: lambda-proxy
+          cors: true
+    package:
+      include:
+        - get-policy-and-mv-type/**
     layers:
       - ${cf:${env:COMPANY_NAME}-bliss-layers.EProductsCommonARN}
